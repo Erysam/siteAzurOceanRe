@@ -1,0 +1,335 @@
+/*.accueil {
+    background-color: rgb(46, 44, 46);
+    font-style: normal;
+    font-family: Arial;
+    font-size: small;
+}*/
+
+#cp,
+#pass {
+    /*Verifier si pass sert à qq chose
+    border-bottom-color: unset; 
+    border-bottom-style: solid;*/
+    background: unset;
+    font-size: small;
+    font-family: Arial;
+    color: #fff;
+    margin-left: 10px;
+    border-bottom-color: unset;
+    margin-left: 0px;
+}
+
+form .search_cp {
+    font-size: small;
+    font-family: Arial;
+    font-style: normal;
+    position: absolute;
+    border-bottom-color: unset;
+    background: unset;
+    font-size: small;
+    font-family: Arial;
+    color: rgb(255, 251, 251);
+    margin-left: 500px;
+    text-align: center;
+    padding: 12px;
+}
+
+.logo {
+    height: 7em;
+    width: 7em;
+    padding: 12px;
+}
+
+
+
+.img {
+
+    /*background-image: url('lalonde.jpg'); Spécifiez le chemin vers votre image et permet de faire une mosaique*/
+    background-size: cover;
+    /* Redimensionne l'image pour couvrir tout l'espace */
+    background-position: center;
+    /* Centre l'image horizontalement et verticalement */
+    background-attachment: fixed;
+    /* Fixe l'image en arrière-plan pour qu'elle reste en place en faisant défiler la page */
+    height: calc(100vh 1280x144);
+    /* Ajustez la hauteur en fonction de la taille de la fenêtre moins la hauteur de la barre de navigation et du footer */
+    position: relative;
+    opacity: 0, 5;
+    width: 100%;
+}
+
+.img-content {
+    margin-top: 1cm;
+    margin-bottom: 1cm;
+    opacity: 0, 5;
+    width: 100%;
+}
+
+.texte_superpose {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    top: 1cm;
+    margin-top: 1cm;
+    color: rgb(253, 252, 252);
+    /* Place le haut du conteneur de texte au centre de l'image */
+    /* left: 50%;
+    /*Place la gauche du conteneur de texte au centre de l'image */
+    /*transform: translate(-50%);
+    /* Centre parfaitement le texte par rapport à son conteneur */
+
+    /* text-align: left;
+    font-style: normal;
+    font-family: Arial;
+    text-align: center;
+    padding-block: inherit;
+    padding-top: 20px;*/
+
+}
+
+.lien:link {
+    text-align: right;
+    color: #faf3f3;
+    font-style: normal;
+    text-decoration: none;
+    padding: 0 25px;
+}
+
+.lien:hover {
+    color: #830606;
+}
+
+.lien:visited {
+    color: #f5f4f4;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.lienConn:link,
+.lienConn:visited {
+    text-decoration: none;
+    font-family: Verdana;
+    font-variant-caps: all-small-caps;
+    color: #ebe9e9;
+}
+
+
+
+.footer {
+    /*position: absolute;*/
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-position: center;
+    text-align: center;
+    background-color: #929191;
+    padding: 10px;
+    left: 0px;
+}
+
+#main {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+#container {
+    /*id container*/
+    height: 100%;
+    position: relative;
+}
+
+.profilLi {
+    /*background-position: right;*/
+    text-align: center;
+    /*margin-left: 300px;*/
+    list-style-type: none;
+}
+
+.formProp,
+.formCon {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean//bateauAvoile.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp2 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/lalonde.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp3 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/plage2.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp4 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    ;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/catamaran.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp5 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/SansBaigneurRogne.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+
+/*
+.fondSN {
+    background-repeat: no-repeat;
+    background-color: #5f5c5c;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://work2/Site%20AzurOcean/catamaranAccueil1.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+*/
+
+.bouton1 {
+    display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5d6166;
+    border-color: #0c0c0c;
+}
+
+form.form1 {
+    display: table;
+    background: unset;
+    display: inline-table;
+}
+
+div.form1 {
+    display: table-row;
+    background: unset;
+}
+
+label,
+input,
+textarea {
+    display: table-cell;
+    margin-bottom: 10px;
+    background: unset;
+    color: #ffffff;
+    border-bottom-color: unset;
+}
+
+textarea {
+    vertical-align: top;
+    border-color: rgb(61, 60, 60);
+    border-width: 1px;
+    border-bottom-color: white;
+    border-bottom-width: 2px
+}
+
+::placeholder {
+    color: rgb(236, 236, 243);
+}
+
+#formFile .formControl,
+#enreg2,
+#enreg {
+    display: table-cell;
+    margin-bottom: 10px;
+    display: table-cell;
+    margin-bottom: 10px;
+    background: unset;
+    /*font-weight: bold;*/
+    font-family: Verdana;
+    color: #f5f4f4;
+    font-variant-caps: all-petite-caps;
+}
+
+label {
+    padding-right: 10px;
+}
+
+.liste {
+    background-position: left;
+    text-align: left;
+    line-height: 1.5;
+    margin: 24px 1em 0 0;
+    padding: 30px;
+    font-size: medium;
+    font-family: Arial;
+    font-variant-caps: all-petite-caps;
+    display: inline-flex;
+}
+
+.cnil:link,
+.cnil:visited {
+    text-decoration: underline;
+    font-family: Verdana;
+    font-variant-caps: all-small-caps;
+    color: #ebe9e9;
+}
+
+.nav-link {
+    color: rgba(245, 240, 240, 0.9) !important;
+}
+
+.en_tete {
+    background-color: #5d616698;
+}
+
+.form-control me-2 {
+    color: #fff6f6fd;
+    border-left-width: 2px;
+    margin-left: 10px;
+}
+
+
+/* MENU GAUCHE QUAND CONNECTE*/
+
+.menu {
+    float: left;
+}
+
+table img {
+    height: 3em;
+    width: 3em;
+    font-size: medium;
+    font-family: Arial;
+    font-variant-caps: all-petite-caps;
+}
+
+tr:nth-child(odd) {
+    background-color: unset;
+}
+
+tr:nth-child(even) {
+    background-color: #929191;
+}
