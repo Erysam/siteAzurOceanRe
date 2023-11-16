@@ -5,10 +5,8 @@ je l'ai retravaillé car il était très brouillon et affeusement mal organisé.
 Cela m'a permis de me remettre à PHP, javascript et HTML.
 
 
-Fictitious boats rental site for boaters and boat owners.
-I sail, and I wanted to create this project, 2 years ago to pass a UV 'IT project' at the CNAM Paris.
-I reworked it because it was very messy and terribly badly organized. The code was absolutely infamous with nonsense and repetitions (even worse than now haha).
-This enabled me to get back into PHP, javascript and HTML.
+Fictitious boat rental site for boaters and boat owners. 
+I sail, and I wanted to create this project 2 years ago to pass an 'IT project' assignment and earn academic credit at CNAM Paris. I reworked it because it was very messy and terribly badly organized. The code was absolutely infamous with nonsense and repetitions (even worse than now haha). This allowed me to get back into PHP, JavaScript, and HTML.
 
 Sitio web fictivo de alquiler de barcos para navegantes y propietarios de barcos.
 Navego todos los años un mes en verano, y He creado este proyecto, hace 2 años para pasar una asignatura 'proyecto informatico' en el CNAM Paris.
