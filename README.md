@@ -1,8 +1,8 @@
 # siteAzurOceanRe
 Site fictif de location de bateaux à disposition des plaisanciers et des propriétaires de bateau.
 Je pratique la voile, et j'ai eu envie de créer ce projet , il y a 2 ans pour passer une UV 'project informatique' au CNAM Paris.
-je l'ai retravaillé car il était très brouillon et affeusement mal organisé. Le code était absolument infame avec des non sens et des répétitions (encore pire que maintenant haha).
-Cela m'a permis de me remettre à PHP, javascript et HTML.
+je l'ai retravaillé car il était très brouillon et affreusement mal organisé. Le code était absolument infâme avec des non-sens et des répétitions (encore pire que maintenant haha).
+Cela m'a permis de me remettre à PHP, javaScript et HTML.
 
 
 Fictitious boat rental site for boaters and boat owners. 
