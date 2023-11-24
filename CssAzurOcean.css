@@ -1,24 +1,3 @@
-/*.accueil {
-    background-color: rgb(46, 44, 46);
-    font-style: normal;
-    font-family: Arial;
-    font-size: small;
-}*/
-
-#cp,
-#pass {
-    /*Verifier si pass sert à qq chose
-    border-bottom-color: unset; 
-    border-bottom-style: solid;*/
-    background: unset;
-    font-size: small;
-    font-family: Arial;
-    color: #fff;
-    margin-left: 10px;
-    border-bottom-color: unset;
-    margin-left: 0px;
-}
-
 form .search_cp {
     font-size: small;
     font-family: Arial;
@@ -42,27 +21,17 @@ form .search_cp {
 
 
 
-.img {
+.img_index .img-conx {
 
-    /*background-image: url('lalonde.jpg'); Spécifiez le chemin vers votre image et permet de faire une mosaique*/
-    background-size: cover;
-    /* Redimensionne l'image pour couvrir tout l'espace */
-    background-position: center;
-    /* Centre l'image horizontalement et verticalement */
-    background-attachment: fixed;
-    /* Fixe l'image en arrière-plan pour qu'elle reste en place en faisant défiler la page */
-    height: calc(100vh 1280x144);
-    /* Ajustez la hauteur en fonction de la taille de la fenêtre moins la hauteur de la barre de navigation et du footer */
-    position: relative;
-    opacity: 0, 5;
     width: 100%;
+    max-width: 100%;
+    margin-top: 1cm;
+    /*opacity: 0.5; permet de rendre opaque l image*/
 }
 
 .img-content {
-    margin-top: 1cm;
-    margin-bottom: 1cm;
-    opacity: 0, 5;
-    width: 100%;
+    margin: 0cm;
+    background-color: #252446;
 }
 
 .texte_superpose {
@@ -83,7 +52,6 @@ form .search_cp {
     text-align: center;
     padding-block: inherit;
     padding-top: 20px;*/
-
 }
 
 .lien:link {
@@ -99,7 +67,7 @@ form .search_cp {
 }
 
 .lien:visited {
-    color: #f5f4f4;
+    color: #403a3a;
     font-style: normal;
     text-decoration: none;
 }
@@ -124,6 +92,7 @@ form .search_cp {
     background-color: #929191;
     padding: 10px;
     left: 0px;
+    display: block;
 }
 
 #main {
@@ -132,11 +101,7 @@ form .search_cp {
     padding-bottom: 10px;
 }
 
-#container {
-    /*id container*/
-    height: 100%;
-    position: relative;
-}
+
 
 .profilLi {
     /*background-position: right;*/
@@ -145,15 +110,13 @@ form .search_cp {
     list-style-type: none;
 }
 
-.formProp,
+body,
 .formCon {
     background-repeat: no-repeat;
     background-color: #929191;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean//bateauAvoile.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     background-position: center;
     background-size: cover;
-    color: #ffffff;
-    /* padding: 1em;*/
     text-align: center;
 }
 
@@ -226,25 +189,30 @@ form .search_cp {
     border-color: #0c0c0c;
 }
 
-form.form1 {
-    display: table;
-    background: unset;
+.formConx {
     display: inline-table;
+    margin: 0cm;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-div.form1 {
-    display: table-row;
-    background: unset;
+.formConxDiv {
+    margin: 0.5cm;
 }
+
 
 label,
 input,
 textarea {
-    display: table-cell;
+    display: -webkit-box;
     margin-bottom: 10px;
     background: unset;
     color: #ffffff;
     border-bottom-color: unset;
+}
+
+.buttonSub {
+    display: block;
+
 }
 
 textarea {
@@ -262,7 +230,6 @@ textarea {
 #formFile .formControl,
 #enreg2,
 #enreg {
-    display: table-cell;
     margin-bottom: 10px;
     display: table-cell;
     margin-bottom: 10px;
@@ -294,26 +261,28 @@ label {
     text-decoration: underline;
     font-family: Verdana;
     font-variant-caps: all-small-caps;
-    color: #ebe9e9;
+    color: #41a6c2;
 }
 
-.nav-link {
-    color: rgba(245, 240, 240, 0.9) !important;
-}
 
-.en_tete {
+
+.header {
+    width: auto;
+    margin-bottom: 1cm;
+    margin-top: 0.5cm;
+    display: block;
     background-color: #5d616698;
+    background-size: 10px;
+    padding: 0.2cm;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ebe9e9;
+    font-weight: 200;
 }
 
-.form-control me-2 {
-    color: #fff6f6fd;
-    border-left-width: 2px;
-    margin-left: 10px;
-}
+
 
 
 /* MENU GAUCHE QUAND CONNECTE*/
-
 .menu {
     float: left;
 }

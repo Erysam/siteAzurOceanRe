@@ -17,7 +17,7 @@ function connexion()
 
 //type renvoi NULL ou on;
 $type = 0;
-if ( $_POST['type'] == 'on'){
+if ($_POST['type'] == 'on') {
     $type = 1;
 }
 
@@ -33,7 +33,7 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     $tel = $_POST['tel'];
     $log = $_POST['login'];
     $mdp = $_POST['mdp'];
-    
+
 
     $maCon = connexion();
     $stmt = mysqli_stmt_init($maCon);
@@ -47,16 +47,10 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     header('Location: http://work2/Site%20AzurOcean/connexion.html');
     exit();
 } else {
-    require ("en_tete2.html");
+    require("header.php");
     echo "Vous n'avez pas reussi à vous enregistrer";
     echo "<a href=\"http://work2/Site%20AzurOcean/pageEnregProprio.html\">Pour enregistrer votre profil</a>";
     echo "<a href=\"http://work2/Site%20AzurOcean/pageDaccueil.html\">Pour revenir à l'accueil</a>";
-    require ("footer.html");
+    require("footer.php");
 }
 mysqli_close($maCon);
-?>
-
-</body>
-
-</html>
-
