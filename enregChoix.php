@@ -21,8 +21,7 @@ function issetEmpty($var1)
 
 <div class="liste">
     <ul>
-        <li><a class="lien" href="pageEnregProprio.php">Vous êtes propriétaire de bateau</a></li>
-        <li><a class="lien" href="pageEnregClient.php">Vous êtes un client souhaitant organiser un séjour ou un event </a></li>
+        <li><a class="lien" href="formEnregMembre.php">Vous êtes propriétaire de bateau, vous êtes un client souhaitant organiser un séjour ou un event</a></li>
         <li><a class="lien" href="connexion.php">Vous êtes déjà enregistré, cliquez ici </a></li>
     </ul>
 </div>

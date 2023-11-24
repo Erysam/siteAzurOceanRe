@@ -22,10 +22,8 @@ include('header.php');
 </div>
 
 <div class="img-content">
-    <div class="img">
+    <div class="img_index">
         <img src="image/lalonde.jpg" alt="bateaux">
-
-
     </div>
 </div>
 
