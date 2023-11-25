@@ -12,14 +12,14 @@ include('header.php');
 
 <div class="container">
   <br>
-  <h5>RÈGLEMENT (UE) 2016/679 DU PARLEMENT EUROPÉEN ET DU CONSEIL du 27 avril 2016 relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel <br />
+  <h4>RÈGLEMENT (UE) 2016/679 DU PARLEMENT EUROPÉEN ET DU CONSEIL du 27 AVRIL 2016 <br>relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel <br />
     et à la libre circulation de ces données, et abrogeant la directive 95/46/CE (règlement général sur la protection des données)
     <br>
-
+  </h4>
+  <h5>
     Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Ste AzurOcéan 8 avenue des 40es rugissants 88088 Nepture/mer <br />
-    pour l'activité de service de la Ste AzurOcéan.
-    La base légale du traitement est le consentement.
-    Les données collectées seront communiquées aux seuls destinataires suivants :Ste AzurOcéan.<br />
+    pour l'activité de service de la Ste AzurOcéan. La base légale du traitement est le consentement.
+    Les données collectées seront communiquées aux seuls destinataires suivants : Ste AzurOcéan.<br />
     Les données sont conservées pendant 50 ans par le responsable du traitement ou critères permettant de la déterminer.<br />
     <br>
 
