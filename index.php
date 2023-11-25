@@ -12,11 +12,13 @@ include('header.php');
 
 <div class="container">
     <div class="texte_superpose">
-        <p>AzurOcéan permet à des propriétaires de bateaux,<br> des skippers professionnels de proposer des séjours
-            nautiques.
-            <br> Notre site vous propose des séjours sur des bateaux en haute mer, <br /> ou en navigation côtière.
-            <br> Si vous êtes une entreprise, il est possible d'organiser vos fêtes d'entreprise, <br> séminaires ou
-            évènements promotionnel sur de magnifiques embarcations.<br>
+        <p>AzurOcéan permet à des propriétaires de bateaux,
+            <br> des skippers professionnels de proposer des séjours nautiques.
+            <br> Notre site vous propose des séjours sur des bateaux en haute mer,
+            <br> ou en navigation côtière.
+            <br> Si vous êtes une entreprise, il est possible d'organiser vos fêtes d'entreprise,
+            <br> séminaires ou évènements promotionnel sur de magnifiques embarcations.
+            <br>
         </p>
     </div>
 </div>

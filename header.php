@@ -14,6 +14,7 @@
 <body>
 
     <div><img src="image/logo.jpg" alt="logo" class="logo" /></div>
+
     <div container>
         <div class="header">
             <a class="lien" href="index.php">Accueil</a>
