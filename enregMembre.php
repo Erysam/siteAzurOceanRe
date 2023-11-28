@@ -1,56 +1,43 @@
 <?php
 session_start();
-
-function issetEmpty($var1)
-{
-    $IssEmpt = isset($var1) && !empty($var1);
-    return $IssEmpt;
-}
-function connexion()
-{
-    $conx = mysqli_connect("localhost", "root", "") or
-        die("connection localhost impossible (0)");
-    mysqli_select_db($conx, "azurocean") or die("pb avec la base azurocean (1)");
-    return $conx;
-}
-
-
-//type renvoi NULL ou on;
-$type = 0;
-if ($_POST['type'] == 'on') {
-    $type = 1;
-}
-
+include('fonctionsCommunes.php');
+require("header.php");
 
 
 if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POST['prenom']) && issetEmpty($_POST['adresse']) && issetEmpty($_POST['cp']) && issetEmpty($_POST['ville']) && issetEmpty($_POST['tel']) && issetEmpty($_POST['login']) && issetEmpty($_POST['mdp'])) {
-    $mail = $_POST['email'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $adresse = $_POST['adresse'];
-    $cp = $_POST['cp'];
-    $ville = $_POST['ville'];
-    $tel = $_POST['tel'];
-    $log = $_POST['login'];
-    $mdp = $_POST['mdp'];
+    $mail = strip_tags($_POST['email']); //strip...permet d'éviter l'injection de balises XSS (malware)
+
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        die("Le mail est incorrect.");
+    } //FILTER... permet de verifier le mail
+
+    $nom = strip_tags($_POST['nom']);
+    $prenom = strip_tags($_POST['prenom']);
+    $adresse = strip_tags($_POST['adresse']);
+    $cp = strip_tags($_POST['cp']);
+    $ville = strip_tags($_POST['ville']);
+    $tel = strip_tags($_POST['tel']);
+    $log = strip_tags($_POST['login']);
+    $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
 
 
     $maCon = connexion();
     $stmt = mysqli_stmt_init($maCon);
-    $sqlInser = "INSERT INTO azurocean.client (id, email, nom, prenom, adresse, cp, ville, tel, login, mdp, type) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, login, mdp) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$log', '$mdp', '$type')";
 
     mysqli_stmt_prepare($stmt, $sqlInser);
-    mysqli_stmt_bind_param($stmt, "sssssssssi", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $log, $mdp, $type); /* le nbre de s represente le nbre de ? et le s pour des 
+    mysqli_stmt_bind_param($stmt, "ssssisiss", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $log, $mdp); /* le nbre de s represente le nbre de ? et le s pour des 
     valeurs string dans la table et i pour les valeur int dans la table (le NULL n'est pas à compter dans les i ou s)*/
-    $result = mysqli_stmt_execute($stmt) or die("query fail 2");
-    header('Location: http://work2/Site%20AzurOcean/connexion.html');
+    $result = mysqli_stmt_execute($stmt) or die("query fail ");
+    header('Location: connexion.php');
     exit();
 } else {
-    require("header.php");
+
     echo "Vous n'avez pas reussi à vous enregistrer";
-    echo "<a href=\"http://work2/Site%20AzurOcean/pageEnregProprio.html\">Pour enregistrer votre profil</a>";
-    echo "<a href=\"http://work2/Site%20AzurOcean/pageDaccueil.html\">Pour revenir à l'accueil</a>";
-    require("footer.php");
+    // A CORRIGER echo "<a href=\"http://work2/Site%20AzurOcean/pageEnregProprio.html\">Pour enregistrer votre profil</a>";
+    // A CORRIGER echo "<a href=\"http://work2/Site%20AzurOcean/pageDaccueil.html\">Pour revenir à l'accueil</a>";
+
 }
 mysqli_close($maCon);
+require("footer.php");

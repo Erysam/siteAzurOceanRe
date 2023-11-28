@@ -2,11 +2,7 @@
 session_start();
 require('header.php');
 
-function issetEmpty($var1)
-{
-    $IssEmpt = isset($var1) && !empty($var1);
-    return $IssEmpt;
-}
+
 ?>
 
 <div class="img-content">

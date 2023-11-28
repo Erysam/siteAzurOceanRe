@@ -6,7 +6,7 @@ include('header.php');
 <h4>Saisir vos données :</h4>
 
 <div class="img-content">
-    <div class="img_formEenregM">
+    <div class="img-conx">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>
@@ -17,7 +17,7 @@ include('header.php');
 
     <div class="formConxDiv">
         <label for="mail">Email</label>
-        <input type="email" class="form-control" name="email" id="mail" placeholder="name@exemple.com">
+        <input type="email" class="form-control" name="email" id="mail" placeholder="name@exemple.com" required>
     </div>
 
 
