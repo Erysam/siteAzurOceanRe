@@ -1,0 +1,259 @@
+form .search_cp {
+    font-size: small;
+    font-family: Arial;
+    font-style: normal;
+    position: absolute;
+    border-bottom-color: unset;
+    background: unset;
+    font-size: small;
+    font-family: Arial;
+    color: rgb(255, 251, 251);
+    margin-left: 500px;
+    text-align: center;
+    padding: 12px;
+}
+
+.logo {
+    height: 7em;
+    width: 7em;
+    padding: 12px;
+}
+
+
+
+.img_index .img-conx {
+
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1cm;
+    /*opacity: 0.5; permet de rendre opaque l image*/
+}
+
+.img-content {
+    margin: 0cm;
+    background-color: #252446;
+}
+
+.texte_superpose {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    top: 1cm;
+    margin-top: 1cm;
+    color: rgb(253, 252, 252);
+}
+
+.lien:link {
+    text-align: right;
+    color: #faf3f3;
+    font-style: normal;
+    text-decoration: none;
+    padding: 0 25px;
+}
+
+.lien:hover {
+    color: #830606;
+}
+
+.lien:visited {
+    color: #403a3a;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.lienConn:link,
+.lienConn:visited {
+    text-decoration: none;
+    font-family: Verdana;
+    font-variant-caps: all-small-caps;
+    color: #ebe9e9;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-position: center;
+    text-align: center;
+    background-color: #929191;
+    padding: 10px;
+    left: 0px;
+    display: block;
+}
+
+#main {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.profilLi {
+    text-align: center;
+    list-style-type: none;
+}
+
+body,
+.formCon {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.formProp2 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/lalonde.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp3 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/plage2.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    /* padding: 1em;*/
+    text-align: center;
+}
+
+.formProp4 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    ;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/catamaran.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+
+.formProp5 {
+    background-repeat: no-repeat;
+    background-color: #929191;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/SansBaigneurRogne.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #ffffff;
+    text-align: center;
+}
+
+.bouton1 {
+    display: block;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5d6166;
+    border-color: #0c0c0c;
+}
+
+.formConx {
+    display: inline-table;
+    margin: 0cm;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.formConxDiv {
+    margin: 0.5cm;
+}
+
+label,
+input,
+textarea {
+    display: -webkit-box;
+    margin-bottom: 10px;
+    background: unset;
+    color: #ffffff;
+    border-bottom-color: unset;
+}
+
+.buttonSub {
+    display: block;
+
+}
+
+textarea {
+    vertical-align: top;
+    border-color: rgb(61, 60, 60);
+    border-width: 1px;
+    border-bottom-color: white;
+    border-bottom-width: 2px
+}
+
+#formFile .formControl,
+#enreg2,
+#enreg {
+    margin-bottom: 10px;
+    display: table-cell;
+    margin-bottom: 10px;
+    background: unset;
+    font-family: Verdana;
+    color: #f5f4f4;
+    font-variant-caps: all-petite-caps;
+}
+
+label {
+    padding-right: 10px;
+}
+
+.liste {
+    background-position: left;
+    text-align: left;
+    line-height: 1.5;
+    margin: 24px 1em 0 0;
+    padding: 30px;
+    font-size: medium;
+    font-family: Arial;
+    font-variant-caps: all-petite-caps;
+    display: inline-flex;
+}
+
+.cnil:link,
+.cnil:visited {
+    text-decoration: underline;
+    font-family: Verdana;
+    font-variant-caps: all-small-caps;
+    color: #41a6c2;
+}
+
+.header {
+    width: auto;
+    margin-bottom: 1cm;
+    margin-top: 0.5cm;
+    display: block;
+    background-color: #5d616698;
+    background-size: 10px;
+    padding: 0.2cm;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ebe9e9;
+    font-weight: 200;
+}
+
+/* MENU GAUCHE QUAND CONNECTE*/
+.menu {
+    float: left;
+}
+
+table img {
+    height: 3em;
+    width: 3em;
+    font-size: medium;
+    font-family: Arial;
+    font-variant-caps: all-petite-caps;
+}
+
+tr:nth-child(odd) {
+    background-color: unset;
+}
+
+tr:nth-child(even) {
+    background-color: #929191;
+}
