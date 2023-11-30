@@ -52,7 +52,7 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         if ($login != $mLog) {
             die("query fail10 : Login ou MDP erronés");
         };
-        if (!password_verify($_POST['username'], $mMdp)) {
+        if (!password_verify($_POST['password'], $mMdp)) {
             die("query fail11 : Login ou MDP erronés");
         }
         $_SESSION["user"] = [
