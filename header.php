@@ -20,5 +20,12 @@
             <a class="lien" href="index.php">Accueil</a>
             <a class="lien" href="enregChoix.php">Enregistrement</a>
             <a class="lien" href="connexion.php">Connexion </a>
+
+            <?php
+            if (isset($_SESSION['user'])) {
+                echo '<a class="lien" href="profil.php">Profil</a>';
+                echo '<a class="lien" href="deconnexion.php">Déconnexion</a>';
+            }
+            ?>
         </div>
     </div>

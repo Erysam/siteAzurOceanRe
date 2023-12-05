@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_regenerate_id(true);
 include('header.php');
 ?>
 
@@ -20,6 +22,15 @@ include('header.php');
             <br> séminaires ou évènements promotionnel sur de magnifiques embarcations.
             <br>
         </p>
+
+        <?php
+        if (isset($_SESSION['user'])) {
+            echo "<h1>Bienvenue, " . $_SESSION['user']['prenom'] . "!</h1>";
+        } else {
+            echo "<p>Connectez-vous pour profiter de fonctionnalités supplémentaires.</p>";
+        }
+        ?>
+
     </div>
 </div>
 
@@ -28,9 +39,6 @@ include('header.php');
         <img src="image/lalonde.jpg" alt="bateaux">
     </div>
 </div>
-
-
-
 
 
 <?php

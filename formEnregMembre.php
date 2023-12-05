@@ -11,8 +11,13 @@ include('header.php');
     </div>
 </div>
 
+<?php
+if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
+    echo "Les données saisies existent déjà. Veuillez corriger votre saisie.";
+}
+?>
 
-<form action="enregMembre.php" method="POST" class="formConx">
+<form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse();">
 
 
     <div class="formConxDiv">
@@ -28,7 +33,7 @@ include('header.php');
         </div>
 
         <div class="col-md-6 mb-3">
-            <label for="prenom"> Prénom :</label>
+            <label for="prenom">Prénom :</label>
             <input type="text" class="form-control" name="prenom" id="prenom" required>
         </div>
     </div>
@@ -63,10 +68,28 @@ include('header.php');
         <input type="text" class="form-control" id="username" name="login" required>
     </div>
 
-    <div class="formConxDiv">
-        <label for="pass">Password (chiffres, lettres et caractères spéciaux):</label>
-        <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="8 caractères minimum">
+    <div class="passwordHelp">
+        <small id="passwordHelp" class="form-text text-muted">
+            Inclure au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
+        </small>
     </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="pass">Password:</label>
+            <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="8 caractères minimum">
+            <label class="check" for="checkbox"><input type="checkbox" onclick="afficheMdp()" class="afficheMdp">Afficher le mot de passe</label>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="confirmPass">Confirmer le mot de passe:</label>
+            <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" required placeholder="8 caractères minimum">
+
+        </div>
+    </div>
+
+
 
     <br />
     <div class="formConxDiv">
@@ -75,6 +98,28 @@ include('header.php');
 </form>
 
 
+<script>
+    function afficheMdp() {
+        var passwordField = document.getElementById("pass");
+        var confirmPassField = document.getElementById("confirmPass");
+
+        passwordField.type = passwordField.type === "password" ? "text" : "password";
+        confirmPassField.type = confirmPassField.type === "password" ? "text" : "password";
+    }
+
+    function verifierMotDePasse() {
+        //.value : récupère la valeur immediate de l'élément (ce que le user saisie en temps reel), au dessus on en a pas besoin car c est juste une valeur d affichage 
+        var password = document.getElementById("pass").value;
+        var confirmPass = document.getElementById("confirmPass").value;
+
+        if (password !== confirmPass) {
+            alert("Les mots de passe ne correspondent pas. Veuillez les vérifier.");
+            return false; // Empêche l'envoi du formulaire
+        }
+
+        return true; // Permet l'envoi du formulaire si les mots de passe correspondent
+    }
+</script>
 
 <?php
 include('footer.php')

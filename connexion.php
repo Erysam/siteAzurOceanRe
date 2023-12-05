@@ -1,6 +1,6 @@
 <?php
-include('header.php');
 session_start();
+include('header.php');
 ?>
 <div>
     <h1>Se connecter</h1>
@@ -9,13 +9,13 @@ session_start();
 
 <form class="formConx" method="POST" action="connexion.php">
     <div class="formConxDiv">
-        <label for="username1">Identifiant:</label>
-        <input type="text" id="username1" name="username">
+        <label for="username1">Identifiant (email):</label>
+        <input type="text" class="form-control" id="username1" name="username">
     </div>
 
     <div class="formConxDiv">
         <label for="pass">Mot de passe : </label>
-        <input type="password" id="pass" name="password" required>
+        <input type="password" class="form-control" id="pass" name="password" required>
     </div>
 
     <div class="formConxDiv">
@@ -55,14 +55,19 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         if (!password_verify($_POST['password'], $mMdp)) {
             die("query fail11 : Login ou MDP erronés");
         }
+
+
         $_SESSION["user"] = [
             "email" => $mEmail,
             "nom" => $mNom,
             "prenom" => $mPren,
             "id" => $mId
         ];
+        session_regenerate_id(true);
         header('Location: index.php'); // A CREER
-
+        echo "Nom du client";
+        echo $_SESSION;
+        exit;
     }
 }
 include('footer.php')

@@ -19,8 +19,6 @@ form .search_cp {
     padding: 12px;
 }
 
-
-
 .img_index .img-conx {
 
     width: 100%;
@@ -236,6 +234,33 @@ label {
     color: #ebe9e9;
     font-weight: 200;
 }
+
+/*ce qui se trouve dans l'encadrer du form de formEnregMembre pour le password "inclure une majuscule...."*/
+#pass,
+#confirmPass {
+    font-size: 12px
+}
+
+.text-muted {
+    color: #f5f8f8 !important;
+    margin-top: 10%;
+}
+
+
+/*texte de la checkbox pour afficher le mdp*/
+input .afficheMdp {
+    display: flex;
+    align-items: center;
+
+
+}
+
+label.check {
+    display: flex;
+    margin-left: 10px;
+}
+
+
 
 /* MENU GAUCHE QUAND CONNECTE*/
 .menu {
