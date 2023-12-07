@@ -11,6 +11,11 @@ include('header.php');
         <input class="form-control me-2" type="search" placeholder="Saisir le code postal" name="cp" aria-label="Search">
     </form>
 </div>
+<?php
+if (isset($_GET['cp']) && $_GET['cp'] == 'emptyCp') {
+    echo "Code postal inexistant, veuillez saisir un autre cp.";
+}
+?>
 
 <div class="container">
     <div class="texte_superpose">

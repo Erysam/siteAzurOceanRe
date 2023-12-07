@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('fonctionsCommunes.php');
 include('header.php');
 ?>
 <div>
@@ -37,18 +38,20 @@ include('header.php');
 
 <?php
 
-include('fonctionsCommunes.php');
+
 if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on charge la page
     if (issetEmpty($_POST['username']) && issetEmpty($_POST['password'])) {
+
         $login = strip_tags($_POST['username']);
-        $mysqli = connexion();
-        $stmt = $mysqli->prepare("SELECT * FROM membre WHERE login = ?");
+
+        $maCon = connexion();
+        $stmt = $maCon->prepare("SELECT * FROM membre WHERE login = ?");
         $stmt->bind_param("s", $login);
         $stmt->execute();
         $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mAdr, $mCp, $mVil, $mTel, $mLog, $mMdp);
         $stmt->fetch();
-        $stmt->close();
-        // mysqli_close($maCon); est ce pertinent apres un $stmt close
+        $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
+        mysqli_close($maCon);
         if ($login != $mLog) {
             die("query fail10 : Login ou MDP erronés");
         };
@@ -64,11 +67,13 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
             "id" => $mId
         ];
         session_regenerate_id(true);
-        header('Location: index.php'); // A CREER
+        header('Location: index.php');
         echo "Nom du client";
         echo $_SESSION;
         exit;
     }
+} else {
+    die('Les données sont vides');
 }
 include('footer.php')
 ?>

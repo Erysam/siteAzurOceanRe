@@ -8,31 +8,31 @@ include('header.php');
 <table class=menu>
 
     <tr>
-        <td><img src="profilPicto.jpg" alt="pictogramme profil, representant un buste stylisé" /></td>
+        <td><img src="picto/pictoRacineJpg/pictoProfil.jpg" alt="pictogramme profil, representant un buste stylisé" /></td>
         <td> <a class="lienConn" href="lienProfil.php">profil</a>
         </td>
     </tr>
     <tr>
-        <td><img src="pictoListeBateaux.jpg" alt="Pictogramme bateau à voile" /></td>
+        <td><img src="picto/pictoRacineJpg/pictoBateauVoile.jpg" alt="Pictogramme bateau à voile" /></td>
         <td> <a class="lienConn" href="listeBateaux.php">Liste bateaux</a></td>
     </tr>
     <tr>
-        <td><img src="pictoMoteur.JPG" alt="Pictogramme bateau à moteur" /></td>
+        <td><img src="picto/pictoRacineJpg/pictoMoteur.jpg" alt="Pictogramme bateau à moteur" /></td>
         <td><a class="lienConn" href="pageEnregBateau.html">Ajout bateau</a></td>
     </tr>
     <tr>
-        <td><img src="pictoSejour.JPG" alt="Pictogramme parasol" /></td>
+        <td><img src="picto/pictoRacineJpg/pictoSejour.jpg" alt="Pictogramme parasol" /></td>
         <td> <a class="lienConn" href="ajoutSejourForm.php">Ajout Séjour</a></td>
     </tr>
     <tr>
-        <td><img src="pictoDeco.JPG" alt="Pictogramme deconnex" /></td>
+        <td><img src="picto/pictoRacineJpg/pictoDeco.jpg" alt="Pictogramme deconnex" /></td>
         <td> <a class="lienConn" href="deconnexion.php">Déconnexion</a></td>
     </tr>
 
 </table>
 
 
-<form enctype="multipart/form-data" action="enregBoat.php" method="POST" class="form1">
+<form enctype="multipart/form-data" actionexit="enregBoat.php" method="POST" class="form1">
     <h4 class="h4EngBat">Saisir les informations <br />relatives à votre bateau :</h4>
 
     <div class="form1">
