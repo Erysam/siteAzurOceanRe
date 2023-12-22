@@ -8,7 +8,7 @@ include('header.php');
 <div class="container">
     <form class="d-flex" action="siteNautique.php" method="GET">
         <p>Site nautique</p>
-        <input class="form-control me-2" type="search" placeholder="Saisir le code postal" name="cp" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Saisir le code postal du site nautique recherché" name="cp" aria-label="Search">
     </form>
 </div>
 <?php

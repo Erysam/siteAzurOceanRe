@@ -15,17 +15,52 @@
 
     <div><img src="image/logo.jpg" alt="logo" class="logo" /></div>
 
-    <div container>
-        <div class="header">
-            <a class="lien" href="index.php">Accueil</a>
-            <a class="lien" href="enregChoix.php">Enregistrement</a>
-            <a class="lien" href="connexion.php">Connexion </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="sejours.php">Séjours</a>
+                    </li>
 
-            <?php
-            if (isset($_SESSION['user'])) {
-                echo '<a class="lien" href="profil.php">Profil</a>';
-                echo '<a class="lien" href="deconnexion.php">Déconnexion</a>';
-            }
-            ?>
+
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                        echo  <<<_END
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.php">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deconnexion.php">Déconnexion</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="reservation.php">Reservations</a></li>
+                            <li><a class="dropdown-item" href="formEnregBateau.php">Enregistrement Bateau</a></li>
+                            <li><a class="dropdown-item" href="formEnregSejour.php">Enregistrement Séjour</a></li>
+                        </ul>
+                    </li>
+                    _END;
+                    } else {
+                        echo  <<<_END
+                    <li class="nav-item">
+                        <a class="nav-link" href="formEnregMembre.php">Enregistrement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="connexion.php">Connexion</a>
+                    </li>
+                    _END;
+                    } ?>
+
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>

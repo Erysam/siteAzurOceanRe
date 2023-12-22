@@ -28,14 +28,29 @@ if (!empty($_GET['cp'])) {
 
             mysqli_stmt_store_result($stmt);
             if (mysqli_stmt_num_rows($stmt) > 0) {
-                mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sDescript, $sDateDeb, $sDateFin, $sCp, $sVille);
+                mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
 
                 while (mysqli_stmt_fetch($stmt)) {
                     // Traitez chaque ligne de résultat ici
                     echo "<br/>";
-                    echo "<h1> $sCp dans la ville de $sVille </h1>";
-                    echo "[ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ] [ <font style=\"color:purple\">Date début : $sDateDeb</font> ] [ <font style=\"color:green\">Date fin : $sDateDeb</font> ]";
+                    echo "<h1> Séjour dans la ville de $sVille ($sCp) </h1>";
+                    echo " [ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ]";
+                    echo " [ <font style=\"color:purple\">Date début : $sDateDeb</font> ] [ <font style=\"color:green\">Date fin : $sDateDeb</font> ]";
+                    echo "<br>";
+                    echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
                     echo "<br/>";
+                    echo "[ Photo séjour : $sPhoto1 ] ";
+                    echo "<br/>";
+                    echo <<<_END
+                    <div class="formConxDiv">
+                        <form action="reservation.php" method="post">
+                            <input type="hidden" name="idSejour" value="$sIdSej">
+                          
+                            <input type="submit" class="buttonRes" value="Reserver">
+                           
+                        </form>
+                    </div>
+                    _END;
                 }
             } else {
                 mysqli_stmt_close($stmt);

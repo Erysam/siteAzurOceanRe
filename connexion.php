@@ -3,15 +3,22 @@ session_start();
 include('fonctionsCommunes.php');
 include('header.php');
 ?>
+
+<h4>Se connecter</h4>
+<div class="img-content">
+    <div class="img-conx">
+        <img src="image/voilierDuCiel.jpg" alt="bateaux">
+    </div>
+</div>
 <div>
-    <h1>Se connecter</h1>
+
 </div>
 
 
 <form class="formConx" method="POST" action="connexion.php">
     <div class="formConxDiv">
         <label for="username1">Identifiant (email):</label>
-        <input type="text" class="form-control" id="username1" name="username">
+        <input type="text" class="form-control" id="username1" name="username" required>
     </div>
 
     <div class="formConxDiv">
@@ -30,11 +37,7 @@ include('header.php');
         <a href="formEnregMembre.php" class="buttonstyle" type="button">S'enregistrer</a>
     </div>
 </div>
-<div class="img-content">
-    <div class="img-conx">
-        <img src="image/voilierDuCiel.jpg" alt="bateaux">
-    </div>
-</div>
+
 
 <?php
 

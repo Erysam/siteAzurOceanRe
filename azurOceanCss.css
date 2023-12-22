@@ -89,6 +89,17 @@ form .search_cp {
     list-style-type: none;
 }
 
+/*espacement sur margin top de la barre de recherche en index.php*/
+.me-2 {
+    margin-top: 10px;
+}
+
+
+/*espacement entre les link de la navbar*/
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 2.5rem;
+}
+
 body,
 .formCon {
     background-repeat: no-repeat;
@@ -96,49 +107,6 @@ body,
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     background-position: center;
     background-size: cover;
-    text-align: center;
-}
-
-.formProp2 {
-    background-repeat: no-repeat;
-    background-color: #929191;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/lalonde.jpg);
-    background-position: center;
-    background-size: cover;
-    color: #ffffff;
-    /* padding: 1em;*/
-    text-align: center;
-}
-
-.formProp3 {
-    background-repeat: no-repeat;
-    background-color: #929191;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/plage2.jpg);
-    background-position: center;
-    background-size: cover;
-    color: #ffffff;
-    /* padding: 1em;*/
-    text-align: center;
-}
-
-.formProp4 {
-    background-repeat: no-repeat;
-    background-color: #929191;
-    ;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/catamaran.jpg);
-    background-position: center;
-    background-size: cover;
-    color: #ffffff;
-    text-align: center;
-}
-
-.formProp5 {
-    background-repeat: no-repeat;
-    background-color: #929191;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(http://work2/Site%20AzurOcean/SansBaigneurRogne.jpg);
-    background-position: center;
-    background-size: cover;
-    color: #ffffff;
     text-align: center;
 }
 
@@ -255,30 +223,29 @@ input .afficheMdp {
 
 }
 
+
+.buttonRes {
+    display: inline-flex;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(78, 74, 74);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.buttonRes:hover {
+    color: #180f69;
+    background-color: #848981;
+    border-color: #dc22ad;
+}
+
 label.check {
     display: flex;
     margin-left: 10px;
-}
-
-
-
-/* MENU GAUCHE QUAND CONNECTE*/
-.menu {
-    float: left;
-}
-
-table img {
-    height: 3em;
-    width: 3em;
-    font-size: medium;
-    font-family: Arial;
-    font-variant-caps: all-petite-caps;
-}
-
-tr:nth-child(odd) {
-    background-color: unset;
-}
-
-tr:nth-child(even) {
-    background-color: #929191;
 }
