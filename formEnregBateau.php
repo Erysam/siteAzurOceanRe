@@ -1,35 +1,10 @@
 <?php
+session_start();
 include('header.php');
 ?>
 
 
 
-
-<table class=menu>
-
-    <tr>
-        <td><img src="picto/pictoRacineJpg/pictoProfil.jpg" alt="pictogramme profil, representant un buste stylisé" /></td>
-        <td> <a class="lienConn" href="lienProfil.php">profil</a>
-        </td>
-    </tr>
-    <tr>
-        <td><img src="picto/pictoRacineJpg/pictoBateauVoile.jpg" alt="Pictogramme bateau à voile" /></td>
-        <td> <a class="lienConn" href="listeBateaux.php">Liste bateaux</a></td>
-    </tr>
-    <tr>
-        <td><img src="picto/pictoRacineJpg/pictoMoteur.jpg" alt="Pictogramme bateau à moteur" /></td>
-        <td><a class="lienConn" href="pageEnregBateau.html">Ajout bateau</a></td>
-    </tr>
-    <tr>
-        <td><img src="picto/pictoRacineJpg/pictoSejour.jpg" alt="Pictogramme parasol" /></td>
-        <td> <a class="lienConn" href="ajoutSejourForm.php">Ajout Séjour</a></td>
-    </tr>
-    <tr>
-        <td><img src="picto/pictoRacineJpg/pictoDeco.jpg" alt="Pictogramme deconnex" /></td>
-        <td> <a class="lienConn" href="deconnexion.php">Déconnexion</a></td>
-    </tr>
-
-</table>
 
 
 <form enctype="multipart/form-data" actionexit="enregBoat.php" method="POST" class="form1">
