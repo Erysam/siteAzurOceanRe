@@ -13,12 +13,19 @@ include('header.php');
 </div>
 
 <?php
+//get erreur recup depuis la page enregMembre.php
+if (isset($_GET['erreur']) && $_GET['erreur'] == 'erreurNum') {
+    echo "Veuillez saisir des nombres valides dans les champs 'Code postal' et 'Téléphone'.";
+    echo "<br>";
+}
+
 if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
-    echo "Les données saisies existent déjà. Veuillez corriger votre saisie.";
+    echo "Le champs 'Email' existe déjà. Veuillez corriger votre saisie.";
+    echo "<br>";
 }
 ?>
 
-<form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse();">
+<form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar();">
 
 
     <div class="formConxDiv">
@@ -48,7 +55,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
 
         <div class="col-md-6 mb-3">
             <label for="cpP">Code postal </label>
-            <input type="text" class="form-control" name="cp" id="cpP" required>
+            <input type="number" class="form-control" name="cp" id="cpP" required>
         </div>
     </div>
 
@@ -60,13 +67,8 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
 
         <div class="col-md-6 mb-3">
             <label for="tel">Téléphone :</label>
-            <input type="text" class="form-control" name="tel" id="tel" required>
+            <input type="number" class="form-control" name="tel" id="tel" required>
         </div>
-    </div>
-
-    <div class="formConxDiv">
-        <label for="username">Identifiant:</label>
-        <input type="text" class="form-control" id="username" name="login" required>
     </div>
 
     <div class="passwordHelp">
@@ -84,7 +86,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
         </div>
 
         <div class="col-md-6 mb-3">
-            <label for="confirmPass">Confirmer le mot de passe:</label>
+            <label for="confirmPass">Confirmer le password:</label>
             <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" required placeholder="8 caractères minimum">
 
         </div>
@@ -99,28 +101,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
 </form>
 
 
-<script>
-    function afficheMdp() {
-        var passwordField = document.getElementById("pass");
-        var confirmPassField = document.getElementById("confirmPass");
 
-        passwordField.type = passwordField.type === "password" ? "text" : "password";
-        confirmPassField.type = confirmPassField.type === "password" ? "text" : "password";
-    }
-
-    function verifierMotDePasse() {
-        //.value : récupère la valeur immediate de l'élément (ce que le user saisie en temps reel), au dessus on en a pas besoin car c est juste une valeur d affichage 
-        var password = document.getElementById("pass").value;
-        var confirmPass = document.getElementById("confirmPass").value;
-
-        if (password !== confirmPass) {
-            alert("Les mots de passe ne correspondent pas. Veuillez les vérifier.");
-            return false; // Empêche l'envoi du formulaire
-        }
-
-        return true; // Permet l'envoi du formulaire si les mots de passe correspondent
-    }
-</script>
 
 <?php
 include('footer.php')

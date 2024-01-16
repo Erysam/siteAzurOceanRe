@@ -3,8 +3,7 @@ session_start();
 include('fonctionsCommunes.php');
 require("header.php");
 
-
-if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POST['prenom']) && issetEmpty($_POST['adresse']) && issetEmpty($_POST['cp']) && issetEmpty($_POST['ville']) && issetEmpty($_POST['tel']) && issetEmpty($_POST['login']) && issetEmpty($_POST['mdp']) && issetEmpty($_POST['confirmMdp'])) {
+if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POST['prenom']) && issetEmpty($_POST['adresse']) && issetEmpty($_POST['cp']) && issetEmpty($_POST['ville']) && issetEmpty($_POST['tel']) && issetEmpty($_POST['mdp']) && issetEmpty($_POST['confirmMdp'])) {
 
     $mail = strip_tags($_POST['email']); //strip...permet d'éviter l'injection de balises XSS (malware)
 
@@ -21,19 +20,30 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     $cp = strip_tags($_POST['cp']);
     $ville = strip_tags($_POST['ville']);
     $tel = strip_tags($_POST['tel']);
-    $log = strip_tags($_POST['login']);
     $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
 
 
+    // Converti les valeurs initialement en string (type texte dans le form), en entiers
+    $cp = (int)$cp;
+    $tel = (int)$tel;
+
+
+    //verifier que la conversion a marché :
+    if ($cp == 0 || $tel == 0) {
+        // quand les valeurs ne sont pas des entiers, le 0 est renvoyé à la BD automatiquement
+        header('Location: formEnregMembre.php?erreur=erreurNum');
+        die("Le code postal et le téléphone doivent être des nombres.");
+    }
+
     $maCon = connexion();
     $stmt = mysqli_stmt_init($maCon);
-    $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, login, mdp) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$log', '$mdp', '$type')";
+    $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, mdp) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+    //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$mdp', '$type')";
 
     if (mysqli_stmt_prepare($stmt, $sqlInser)) {
         //s'assurer que la préparation de la requête est correcte avant exécution
 
-        mysqli_stmt_bind_param($stmt, "ssssisiss", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $log, $mdp); /* le nbre de s represente le nbre de ? et le s pour des 
+        mysqli_stmt_bind_param($stmt, "ssssisis", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp); /* le nbre de s represente le nbre de ? et le s pour des 
     valeurs string dans la table et i pour les valeur int dans la table (le NULL n'est pas à compter dans les i ou s)*/
 
         try {

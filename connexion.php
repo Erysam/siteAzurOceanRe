@@ -45,21 +45,21 @@ include('header.php');
 if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on charge la page
     if (issetEmpty($_POST['username']) && issetEmpty($_POST['password'])) {
 
-        $login = strip_tags($_POST['username']);
+        $mEmail = strip_tags($_POST['username']);
 
         $maCon = connexion();
-        $stmt = $maCon->prepare("SELECT * FROM membre WHERE login = ?");
-        $stmt->bind_param("s", $login);
+        $stmt = $maCon->prepare("SELECT * FROM membre WHERE email = ?");
+        $stmt->bind_param("s", $mEmail);
         $stmt->execute();
-        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mAdr, $mCp, $mVil, $mTel, $mLog, $mMdp);
+        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mAdr, $mCp, $mVil, $mTel, $mMdp);
         $stmt->fetch();
         $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
         mysqli_close($maCon);
-        if ($login != $mLog) {
-            die("query fail10 : Login ou MDP erronés");
+        if ($mEmail != $mEmail) {
+            die("query fail10 : Identifiant ou MDP erronés");
         };
         if (!password_verify($_POST['password'], $mMdp)) {
-            die("query fail11 : Login ou MDP erronés");
+            die("query fail11 : Identifiant ou MDP erronés");
         }
 
 
@@ -74,9 +74,9 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         echo "Nom du client";
         echo $_SESSION;
         exit;
+    } else {
+        die("erreur");
     }
-} else {
-    die('Les données sont vides');
 }
 include('footer.php')
 ?>
