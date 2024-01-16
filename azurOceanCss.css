@@ -19,19 +19,19 @@ form .search_cp {
     padding: 12px;
 }
 
+/*
 .img_index .img-conx {
 
     width: 100%;
     max-width: 100%;
     margin-top: 1cm;
-    /*opacity: 0.5; permet de rendre opaque l image*/
 }
 
 .img-content {
     margin: 0cm;
     background-color: #252446;
 }
-
+*/
 .texte_superpose {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -165,6 +165,27 @@ textarea {
     color: #f5f4f4;
     font-variant-caps: all-petite-caps;
 }
+
+
+.carousel-inner {
+    max-width: 400px;
+    /* Largeur maximale souhaitée */
+    height: auto;
+    /* Hauteur automatique pour conserver les proportions */
+    object-fit: contain;
+    /* Ajuste l'image tout en conservant ses proportions */
+}
+
+/* Style pour le conteneur du carousel */
+.carousel-item {
+    width: 400px;
+    /* Assurez-vous que le conteneur du carousel a la même largeur que les images */
+    height: 700px;
+    /* Hauteur souhaitée pour le conteneur */
+    overflow: hidden;
+    /* Masque les parties de l'image qui dépassent du cadre */
+}
+
 
 label {
     padding-right: 10px;
