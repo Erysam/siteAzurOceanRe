@@ -1,11 +1,13 @@
 <?php
 session_start();
-include('fonctionsCommunes.php');
+require('fonctionsCommunes.php'); //diff entre include et require, c'est que ce dernier provoque un arret de l'exe alors que include permet au script de continuer 
 require("header.php");
+//script pour les fonctions dans util.js appelé par le footer
 
 if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POST['prenom']) && issetEmpty($_POST['adresse']) && issetEmpty($_POST['cp']) && issetEmpty($_POST['ville']) && issetEmpty($_POST['tel']) && issetEmpty($_POST['mdp']) && issetEmpty($_POST['confirmMdp'])) {
 
-    $mail = strip_tags($_POST['email']); //strip...permet d'éviter l'injection de balises XSS (malware)
+    $mail = strip_tags($_POST['email']); /* strip_tags()...permet d'éviter l'injection de balises XSS (malware)...
+    ...(contrairement à htmlspecialchars() qui les rend inactives, strip_tages() supprime toute balise php et html)*/
 
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
         die("Le mail est incorrect.");
@@ -20,7 +22,14 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     $cp = strip_tags($_POST['cp']);
     $ville = strip_tags($_POST['ville']);
     $tel = strip_tags($_POST['tel']);
-    $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
+
+
+    //fonction php avec regex pour etre sur que le mdp est bien valide, si tentative à ce stade là, malveillance probable, pas de sortie propre) 
+    if (verifMdpCharPhp($mdp)) {
+        $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
+    } else {
+        die("erreur 369");
+    }
 
 
     // Converti les valeurs initialement en string (type texte dans le form), en entiers
@@ -75,4 +84,4 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
 }
 
 mysqli_close($maCon);
-require("footer.php");
+include("footer.php");
