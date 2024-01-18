@@ -3,8 +3,9 @@ session_start();
 include('header.php');
 ?>
 
-
-<h4>Saisir vos données :</h4>
+<div class="h4">
+    <h4>Saisir vos données :</h4>
+</div>
 
 <div class="img-content">
     <div class="img-conx">
@@ -104,5 +105,5 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
 
 
 <?php
-include('footer.php')
+include('footer.php');
 ?>

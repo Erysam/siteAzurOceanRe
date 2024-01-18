@@ -19,6 +19,12 @@ form .search_cp {
     padding: 12px;
 }
 
+
+.h4 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
 /*
 .img_index .img-conx {
 
@@ -65,6 +71,7 @@ form .search_cp {
     font-variant-caps: all-small-caps;
     color: #ebe9e9;
 }
+
 
 .footer {
     bottom: 0;
