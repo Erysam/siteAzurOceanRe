@@ -46,17 +46,17 @@ include('header.php');
 if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on charge la page
     if (issetNotEmpty($_POST['username']) && issetNotEmpty($_POST['password'])) {
 
-        $mEmail = strip_tags($_POST['username']);
+        $userEmail = strip_tags($_POST['username']);
 
         $maCon = connexion();
         $stmt = $maCon->prepare("SELECT * FROM membre WHERE email = ?");
-        $stmt->bind_param("s", $mEmail);
+        $stmt->bind_param("s", $userEmail);
         $stmt->execute();
         $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mAdr, $mCp, $mVil, $mTel, $mMdp);
         $stmt->fetch();
         $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
         mysqli_close($maCon);
-        if ($mEmail != $mEmail) {
+        if ($mEmail != $userEmail) {
             die("query fail10 : Identifiant ou MDP erronés");
         };
         if (!password_verify($_POST['password'], $mMdp)) {

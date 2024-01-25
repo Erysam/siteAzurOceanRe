@@ -8,6 +8,18 @@ session_regenerate_id(true);
 require('header.php');
 require('fonctionsCommunes.php');
 
+if (!issetNotEmpty($_SESSION)) {
+    header('Location: connexion.php');
+}
+
+if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
+    echo ('Veuillez saisir un email valide.');
+}
+
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
+    echo ('Veuillez saisir un password valide.');
+}
+
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurEmail') {
     echo ('Veuillez saisir un email valide.');
 }
@@ -16,12 +28,11 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
     echo ('Veuillez saisir un téléphone ou/et un cp valide.');
 }
 //Si le user n'est pas deconnecté par le $sessionLifeTime ou autre
-if (!issetNotEmpty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
+if (!issetNotEmpty($_SESSION['user']['id'])) {
     header('Location: connexion.php');
-    exit;
 }
 
-$iduserSession = htmlspecialchars($_SESSION['user']['id']);
+$idUserSession = $_SESSION['user']['id'];
 //$mIdMembre;
 $mEmail;
 $mNom;
@@ -34,7 +45,7 @@ $mMdp;
 
 $maCon = connexion();
 $stmt = mysqli_stmt_init($maCon);
-$sqlSelect = "SELECT * FROM membre WHERE idMembre = $iduserSession";
+$sqlSelect = "SELECT * FROM membre WHERE idMembre = $idUserSession";
 
 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     $result = mysqli_stmt_execute($stmt);
@@ -82,8 +93,6 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 ?>
 
 <form action="enregModifProfil.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar();">
-
-    <input type="hidden" name="client_id" value="<?php echo $iduserSession; ?>">
 
     <div class="formConxDiv">
         <label for="mail">Email</label>
@@ -140,9 +149,6 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
             </div>
-
-
-
         </div>
 
         <div class="col-md-6 mb-3">
