@@ -2,6 +2,7 @@
 session_start();
 include('fonctionsCommunes.php');
 include('header.php');
+
 ?>
 
 <h4>Se connecter</h4>
@@ -43,7 +44,7 @@ include('header.php');
 
 
 if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on charge la page
-    if (issetEmpty($_POST['username']) && issetEmpty($_POST['password'])) {
+    if (issetNotEmpty($_POST['username']) && issetNotEmpty($_POST['password'])) {
 
         $mEmail = strip_tags($_POST['username']);
 

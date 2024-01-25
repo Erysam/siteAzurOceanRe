@@ -1,4 +1,6 @@
 <?php
+$sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
+session_set_cookie_params($sessionLifetime);
 session_start();
 include('header.php');
 ?>
@@ -15,15 +17,18 @@ include('header.php');
 
 <?php
 //get erreur recup depuis la page enregMembre.php
-if (isset($_GET['erreur']) && $_GET['erreur'] == 'erreurNum') {
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
     echo "Veuillez saisir des nombres valides dans les champs 'Code postal' et 'Téléphone'.";
     echo "<br>";
 }
 
-if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
     echo "Le champs 'Email' existe déjà. Veuillez corriger votre saisie.";
     echo "<br>";
 }
+
+//Les fonctions 2 premières sont appelées lorsque le user submit le form alors que la 3 est un onClick lorsque le user coche la checkbox
+// voir a modifier la checkbox par un checkbox bootstarp plus actuel et que le mdp soit masqué automatiquement au bout de quelques secondes
 ?>
 
 <form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar();">
@@ -82,8 +87,10 @@ if (isset($_GET['erreur']) && $_GET['erreur'] == 'duplication') {
         <div class="col-md-6 mb-3">
             <label for="pass">Password:</label>
             <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="8 caractères minimum">
-            <label class="check" for="checkbox"><input type="checkbox" onclick="afficheMdp()" class="afficheMdp">Afficher le mot de passe</label>
-
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
+            </div>
         </div>
 
         <div class="col-md-6 mb-3">

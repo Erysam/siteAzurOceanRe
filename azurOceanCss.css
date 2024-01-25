@@ -242,13 +242,10 @@ label {
     margin-top: 10%;
 }
 
-
 /*texte de la checkbox pour afficher le mdp*/
-input .afficheMdp {
-    display: flex;
-    align-items: center;
-
-
+.form-check-input:checked {
+    background-color: #4d4b4d;
+    border-color: #cec8d3;
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-function issetEmpty($var1)
+function issetNotEmpty($var1)
 {
     $IssEmpt = isset($var1) && !empty($var1);
     return $IssEmpt;

@@ -2,20 +2,23 @@
 session_start();
 require('fonctionsCommunes.php'); //diff entre include et require, c'est que ce dernier provoque un arret de l'exe alors que include permet au script de continuer 
 require("header.php");
+
 //script pour les fonctions dans util.js appelé par le footer
 
-if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POST['prenom']) && issetEmpty($_POST['adresse']) && issetEmpty($_POST['cp']) && issetEmpty($_POST['ville']) && issetEmpty($_POST['tel']) && issetEmpty($_POST['mdp']) && issetEmpty($_POST['confirmMdp'])) {
+if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEmpty($_POST['prenom']) && issetNotEmpty($_POST['adresse']) && issetNotEmpty($_POST['cp']) && issetNotEmpty($_POST['ville']) && issetNotEmpty($_POST['tel']) && issetNotEmpty($_POST['mdp']) && issetNotEmpty($_POST['confirmMdp'])) {
 
     $mail = strip_tags($_POST['email']); /* strip_tags()...permet d'éviter l'injection de balises XSS (malware)...
     ...(contrairement à htmlspecialchars() qui les rend inactives, strip_tages() supprime toute balise php et html)*/
 
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        die("Le mail est incorrect.");
         echo "<a href=\"http://localhost/siteAzurOceanRe/formEnregMembre.php\">Pour enregistrer votre profil</a>";
+        die("Le mail est incorrect.");
     } //FILTER... permet de verifier le format du mail
 
-    $mdp = $_POST['mdp'];
-    $confirmMdp = $_POST['confirmMdp'];
+    if (!$_POST['mdp'] === $_POST['confirmMdp']) {
+        die('mdp et confirmation du mdp différents');
+    }
+    $mdp = $_POST['mdp']; //il n'est pas recommandé de striptags le mdp
     $nom = strip_tags($_POST['nom']);
     $prenom = strip_tags($_POST['prenom']);
     $adresse = strip_tags($_POST['adresse']);
@@ -28,7 +31,7 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     if (verifMdpCharPhp($mdp)) {
         $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
     } else {
-        die("erreur 369");
+        die("erreur 36913");
     }
 
 
@@ -41,13 +44,13 @@ if (issetEmpty($_POST['email']) && issetEmpty($_POST['nom']) && issetEmpty($_POS
     if ($cp == 0 || $tel == 0) {
         // quand les valeurs ne sont pas des entiers, le 0 est renvoyé à la BD automatiquement
         header('Location: formEnregMembre.php?erreur=erreurNum');
-        die("Le code postal et le téléphone doivent être des nombres.");
+        die("Code postal ou tél erronés.");
     }
 
     $maCon = connexion();
     $stmt = mysqli_stmt_init($maCon);
     $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, mdp) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
-    //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$mdp', '$type')";
+    //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$mdp')";
 
     if (mysqli_stmt_prepare($stmt, $sqlInser)) {
         //s'assurer que la préparation de la requête est correcte avant exécution

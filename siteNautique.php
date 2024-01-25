@@ -12,7 +12,7 @@ include('header.php');
 
 <?php
 if (!empty($_GET['cp'])) {
-    if (issetEmpty($_GET['cp']) && (is_numeric($_GET['cp'])) && (strlen($_GET['cp']) == 5)) {
+    if (issetNotEmpty($_GET['cp']) && (is_numeric($_GET['cp'])) && (strlen($_GET['cp']) == 5)) {
 
         $cp = $_GET['cp'];
 

@@ -1,15 +1,21 @@
-//appeler les fonction js en incluant en haut du fichier php :
-//<script src="util.js">
+//appelle les fonctions js en incluant dans le footer php : <script src="util.js">
 
 
 
-//Affiche le MDP lorsqu'on coche ou décoche la case
+//Affiche le MDP lorsqu'on coche ou décoche la case (detection par le onclick de la balise input de la checkbox)
 function afficheMdp() {
-    var passwordField = document.getElementById("pass");
-    var confirmPassField = document.getElementById("confirmPass");
+    var passwordChamp = document.getElementById("pass");
+    var confirmPassChamp = document.getElementById("confirmPass");
+    //c'est le type de champ dans la balise input qui determine si le texte est masqué ou non
+    passwordChamp.type = passwordChamp.type === "password" ? "text" : "password";
+    confirmPassChamp.type = confirmPassChamp.type === "password" ? "text" : "password";
 
-    passwordField.type = passwordField.type === "password" ? "text" : "password";
-    confirmPassField.type = confirmPassField.type === "password" ? "text" : "password";
+    //setTimeout est une fx predefinie dans laquelle on met la fx à executer et le delai d'execution de la fx
+    //(function()) est une fonction anonyme souvent utilisée quand c est une fonction local (non reutilisée) ou pour être concis (utilisée dans les callback dans le cadre des opérations asynchrone)
+    setTimeout(function () {
+        passwordChamp.type = "password";
+        confirmPassChamp.type = "password";
+    }, 30000);
 }
 
 //verifie que les deux champs sont identiques (pass et confirmpass)
@@ -47,4 +53,3 @@ function verifMdpChar() {
 
     return true;
 }
-
