@@ -137,14 +137,14 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
         </div>
     </div>
     <div class="formConxDiv">
-        <label for="mdp">Saisissez l'ancien password pour le modifier</label>
-        <input type="password" class="form-control" name="mdpAncien" id="mdp" placeholder="" required>
+        <label for="mdp">Saisissez l'ancien password pour valider les modifications</label>
+        <input type="password" class="form-control" name="mdpActuel" id="mdp" placeholder="" required>
     </div>
 
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="pass">Nouveau password*:</label>
-            <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="">
+            <input type="password" class="form-control" id="pass" name="mdp" minlength="8" placeholder="">
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
@@ -153,7 +153,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
         <div class="col-md-6 mb-3">
             <label for="confirmPass">Confirmer le nouveau password:</label>
-            <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" required placeholder="">
+            <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" placeholder="">
 
         </div>
     </div>
