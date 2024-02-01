@@ -35,13 +35,7 @@
                     <?php
                     if (isset($_SESSION['user'])) {
                         echo  <<<_END
-                    <li class="nav-item">
-                        <a class="nav-link" href="profil.php">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="deconnexion.php">Déconnexion</a>
-                    </li>
-
+                        
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Menu
@@ -51,6 +45,22 @@
                             <li><a class="dropdown-item" href="formEnregBateau.php">Enregistrement Bateau</a></li>
                             <li><a class="dropdown-item" href="formEnregSejour.php">Enregistrement Séjour</a></li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profil
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="profil.php">Profil</a></li>
+                            <li><a class="dropdown-item" href="profilModifMail.php">Modifier email</a></li>
+                            <li><a class="dropdown-item" href="profilModifMdp.php">Modifier mot de passe</a></li>
+                        </ul>
+                    </li>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deconnexion.php">Déconnexion</a>
                     </li>
                     _END;
                     } else {

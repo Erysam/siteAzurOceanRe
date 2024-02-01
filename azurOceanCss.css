@@ -130,14 +130,15 @@ body,
 
 .formConx {
     display: inline-table;
-    margin: 0cm;
+    margin: 1cm;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*
 .formConxDiv {
     margin: 0.5cm;
 }
-
+*/
 label,
 input,
 textarea {

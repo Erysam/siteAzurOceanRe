@@ -1,12 +1,15 @@
 <?php
+
+$sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
+session_set_cookie_params($sessionLifetime);
 session_start();
+session_regenerate_id(true);
 include('header.php');
 include('fonctionsCommunes.php');
+
 ?>
 
-
 <?php
-
 
 $maCon = connexion();
 $stmt = mysqli_stmt_init($maCon);
@@ -19,7 +22,8 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     mysqli_stmt_store_result($stmt);
     if (mysqli_stmt_num_rows($stmt) > 0) {
         mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntitil, $sDescript, $sDateDeb, $sDateFin, $sAdresse, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
-        $num = 1; //compteur pour mon carousel afin que id soit différente pour chaque séjour
+
+        $num = 0; //compteur pour mon carousel afin que id soit différente pour chaque séjour
         while (mysqli_stmt_fetch($stmt)) { //tant que je recup des resultats de mon stmt, je traite chq result ici
             echo "<br/>";
             echo "<h1> Séjour dans la ville de $sVille ($sCp) </h1>";
@@ -31,37 +35,30 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
             $num = $num + 1;
 
             echo <<<_END
-            <div id="myCarousel$num" class="carousel slide"> 
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#myCarousel$num" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#myCarousel$num" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#myCarousel$num" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
+        
+            <div id="myCarousel$num" class="carousel slide"data-ride="carousel">
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="$sPhoto1" class="d-block img-fluid" alt="First slide">
+                        <img src="$sPhoto1" class="d-block w-100" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="$sPhoto2" class="d-block img-fluid" alt="Second slide">
+                        <img src="$sPhoto2" class="d-block w-100" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="$sPhoto3" class="d-block img-fluid" alt="Third slide">
+                        <img src="$sPhoto3" class="d-block w-100" alt="Third slide">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel$num
-                " data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel$num
-                " data-bs-slide="next">
+                <a class="carousel-control-prev" href="#myCarousel$num" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel$num" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-              </button>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-
-
+        
             _END;
 
             echo <<<_END
@@ -88,12 +85,6 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     die('pas de réponse');
 }
 
-mysqli_stmt_close($stmt);
 mysqli_close($maCon);
 
-?>
-
-
-<?php
 include('footer.php');
-?>
