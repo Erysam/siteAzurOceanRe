@@ -46,48 +46,34 @@ if (
     $stmt->bind_result($resultMdp);
     $stmt->fetch();
     $stmt->close();
-    var_dump($resultMdp);
 
     //verification du mdp actuel
     if (!password_verify($pMdpActuel, $resultMdp)) {
         mysqli_close($maCon);
         header('Location: profil.php?erreur=erreurMdp');
     }
-    //si le mdpActuel est modifié, on fait les verif, on hache le nouveau mdp et on l insert dans la bdd 
-    if (issetNotEmpty($_POST['mdp']) && issetNotEmpty($_POST['confirmMdp'])) {
 
-        if (!$_POST['mdp'] === $_POST['confirmMdp']) {
+
+    $stmt = mysqli_stmt_init($maCon);
+    $sqlUpdate = "UPDATE azurocean.membre SET email = ?, nom = ?, prenom = ?, adresse = ?, cp = ?, ville = ?, tel = ? WHERE idMembre = ?";
+
+    if (mysqli_stmt_prepare($stmt, $sqlUpdate)) {
+        mysqli_stmt_bind_param($stmt, "ssssisii", $pEmail, $pNom, $pPrenom, $pAdresse, $pCp, $pVille, $pTel, $idUserSession);
+
+        try {
+            $result = mysqli_stmt_execute($stmt);
             mysqli_close($maCon);
-            header('Location: profil.php?erreur=erreurMdp');
-        }
-        //on hache le nouveau mdp et il est affecté à la variable de l'actuel mdp
-        if (verifMdpCharPhp($_POST['mdp'])) {
-            $pMdpActuel = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
-        } else {
-            mysqli_close($maCon);
-            die("erreur 36913");
-        }
-
-        $stmt = mysqli_stmt_init($maCon);
-        $sqlUpdate = "UPDATE azurocean.membre SET email = ?, nom = ?, prenom = ?, adresse = ?, cp = ?, ville = ?, tel = ?, mdp = ?) WHERE idMembre = ?";
-
-        if (mysqli_stmt_prepare($stmt, $sqlUpdate)) {
-            mysqli_stmt_bind_param($stmt, "ssssisisi", $pEmail, $pNom, $pPrenom, $pAdresse, $pCp, $pVille, $pTel, $pMdpActuel, $idUserSession);
-
-            try {
-                $result = mysqli_stmt_execute($stmt);
+            header('Location: profil.php?modif=modifReussie');
+        } catch (mysqli_sql_exception $e) {
+            if (mysqli_errno($maCon) == 1062) {
                 mysqli_close($maCon);
-                header('Location: profil.php?modif=modifReussie');
-            } catch (mysqli_sql_exception $e) {
-                if (mysqli_errno($maCon) == 1062) {
-                    mysqli_close($maCon);
-                    header('Location: profil.php?erreur=erreurEmail');
-                }
-                die("Erreur dans la saisie");
-                //voir si on renvoie le code erreur
+                header('Location: profil.php?erreur=erreurEmail');
             }
+            die("Erreur dans la saisie");
+            //voir si on renvoie le code erreur
         }
     }
+
     mysqli_close($maCon);
     header('Location: profil.php?modif=modifReussie');
 } else {

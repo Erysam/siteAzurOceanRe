@@ -96,7 +96,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
     <div class="formConxDiv">
         <label for="mail">Email</label>
-        <input type="email" class="form-control" name="email" id="mail" value="<?php echo $mEmail; ?>" required>
+        <input type="email" class="form-control" name="email" id="mail" value="<?php echo $mEmail; ?>" readonly style="background-color: #red; color: #aba1a1;">
     </div>
 
 
@@ -138,7 +138,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
     </div>
     <div class="formConxDiv">
         <label for="mdp">Saisissez votre password pour valider les modifications</label>
-        <input type="password" class="form-control" name="mdpActuel" id="mdp" placeholder="" required>
+        <input type="password" class="form-control" name="mdpActuel" id="pass" placeholder="" required>
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
             <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>

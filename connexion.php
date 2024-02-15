@@ -1,7 +1,13 @@
 <?php
 session_start();
+session_regenerate_id(true);
+
 include('fonctionsCommunes.php');
 include('header.php');
+
+if (isset($_GET['enregistrement']) && $_GET['enregistrement'] === 'reussi') {
+    echo ('Enregistrement réussi');
+}
 
 ?>
 
@@ -38,8 +44,6 @@ include('header.php');
         <a href="formEnregMembre.php" class="buttonstyle" type="button">S'enregistrer</a>
     </div>
 </div>
-
-
 <?php
 
 
@@ -47,22 +51,22 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
     if (issetNotEmpty($_POST['username']) && issetNotEmpty($_POST['password'])) {
 
         $userEmail = strip_tags($_POST['username']);
-
+        $mdpSaisi = $_POST['password'];
         $maCon = connexion();
-        $stmt = $maCon->prepare("SELECT * FROM membre WHERE email = ?");
+        $stmt = $maCon->prepare("SELECT idMembre, email, nom, prenom, mdp FROM membre WHERE email = ?");
         $stmt->bind_param("s", $userEmail);
         $stmt->execute();
-        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mAdr, $mCp, $mVil, $mTel, $mMdp);
+        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mMdp);
         $stmt->fetch();
         $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
         mysqli_close($maCon);
-        if ($mEmail != $userEmail) {
-            die("query fail10 : Identifiant ou MDP erronés");
-        };
-        if (!password_verify($_POST['password'], $mMdp)) {
-            die("query fail11 : Identifiant ou MDP erronés");
-        }
 
+        if (!$mEmail || !password_verify($mdpSaisi, $mMdp)) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
+            var_dump($mEmail);
+            var_dump($mMdp);
+            var_dump($mdpSaisi);
+            die("Identifiant ou mot de passe incorrect.");
+        }
 
         $_SESSION["user"] = [
             "email" => $mEmail,
@@ -72,11 +76,9 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         ];
         session_regenerate_id(true);
         header('Location: index.php');
-        echo "Nom du client";
-        echo $_SESSION;
         exit;
     } else {
-        die("erreur");
+        die("Veuillez remplir tous les champs");
     }
 }
 include('footer.php')

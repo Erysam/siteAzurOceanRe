@@ -60,13 +60,9 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
 
         try {
             $result = mysqli_stmt_execute($stmt);
-
-            // Si l'insertion réussit, redirigez vers la page de connexion
-            //if ($result) {
-            header('Location: connexion.php'); //le exit ou die n a pas sa place, car header termine le script php automatiquement 
             mysqli_close($maCon);
+            header('Location: connexion.php?enregistrement=reussi'); //le exit ou die n a pas sa place, car header termine le script php automatiquement 
 
-            //} 
 
         } catch (mysqli_sql_exception $e) { //$e instance de classe mysqli-sql-exception pour acceder à la methode getMessage() afin d avoir un piste sur l'erreur.)
 

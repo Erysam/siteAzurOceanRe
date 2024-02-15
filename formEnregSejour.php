@@ -3,8 +3,9 @@ session_start();
 include('fonctionsCommunes.php');
 require("header.php");
 ?>
-
-<h4>Saisir vos données :</h4>
+<div class="h4">
+    <h4>Proposer un séjour :</h4>
+</div>
 
 <div class="img-content">
     <div class="img-conx">

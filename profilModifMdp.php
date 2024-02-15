@@ -13,11 +13,15 @@ if (!issetNotEmpty($_SESSION)) {
 }
 
 if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
-    echo ('Veuillez saisir un email valide.');
+    echo ('Modification reussie.');
 }
 
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
     echo ('Veuillez saisir un password valide.');
+}
+
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp2') {
+    echo ('Veuillez saisir un password valide2.');
 }
 
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurEmail') {
@@ -54,7 +58,7 @@ if (!issetNotEmpty($_SESSION['user']['id'])) {
 
     <div class="formConxDiv">
         <label for="mdp">Saisissez l'ancien password pour valider les modifications</label>
-        <input type="password" class="form-control" name="mdpActuel" id="mdp" placeholder="" required>
+        <input type="password" class="form-control" name="mdpActuel" id="mdpActuel" placeholder="" required>
     </div>
 
     <div class="row">

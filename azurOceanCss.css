@@ -107,6 +107,12 @@ form .search_cp {
     padding-right: 2.5rem;
 }
 
+
+.img_index {
+    padding-bottom: 20px;
+    padding-top: 16px;
+}
+
 body,
 .formCon {
     background-repeat: no-repeat;

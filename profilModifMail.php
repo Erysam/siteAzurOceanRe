@@ -57,7 +57,7 @@ mysqli_close($maCon);
 
 
 <div class="h4">
-    <h4>Modifier votre Email:</h4>
+    <h4>Modifier votre Email: <?php echo $mEmail; ?></h4>
 </div>
 <div class="img-content">
     <div class="img-conx">
@@ -75,7 +75,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
 ?>
 
-<form action="enregModifProfil.php" method="POST" class="formConx">
+<form action="enregModifMail.php" method="POST" class="formConx">
 
     <div class="formConxDiv">
         <label for="mail">Email</label>
@@ -85,7 +85,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
     <div class="formConxDiv">
         <label for="mdp">Saisissez votre password pour valider les modifications</label>
-        <input type="password" class="form-control" name="mdpActuel" id="mdp" placeholder="" required>
+        <input type="password" class="form-control" name="mdpActuel" id="pass" placeholder="" required>
         <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
             <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>

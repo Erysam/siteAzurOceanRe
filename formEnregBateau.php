@@ -14,7 +14,9 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
 }
 
 ?>
-<h4>Enregistrer un bateau:</h4>
+<div class="h4">
+    <h4>Enregistrer un bateau:</h4>
+</div>
 
 <div class="img-content">
     <div class="img-conx">
@@ -88,18 +90,22 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
         </div>
     </div>
 
-
-    <div class="formConx">
-        <label for="formFile">Photos bateau (max 3 images, max 2Mo, format PNG ou jpeg)</label>
-        <input class="formFile" type="file" name="photos[]" id="formFile" multiple accept="image/jpeg, image/png">
-        <!-- les [] dans le nom de l'input indique qu il y a plusieurs fichiers et que cela se comportera comme un tableau: les fichiers sont stockés dans $_FILES['photos'] en PHP sous forme de tableau-->
-        <!-- A la place de accept="image/jpeg, image/png" on peut mettre accept="image/*" qui accepte tous les fichiers images-->
-    </div>
-
     <div class="formConxDiv">
         <label for="description">Description</label>
         <textarea type="text" class="form-control" name="descript" id="descript" placeholder="Détaillez le séjour proposé" required rows="10"></textarea>
     </div>
+    <br>
+    <div class="formConxDiv">
+        <label for="formFile">Photos bateau (max 3 images, max 2Mo, format PNG ou jpeg)</label>
+        <input class="formFile" type="file" name="photo1[]" id="formFile" multiple accept="image/jpeg, image/png">
+        <input class="formFile" type="file" name="photo2[]" id="formFile" multiple accept="image/jpeg, image/png">
+        <input class="formFile" type="file" name="photo3[]" id="formFile" multiple accept="image/jpeg, image/png">
+    </div>
+    <!--  les [] dans le nom de l'input indique qu il y a plusieurs fichiers et que cela se comportera comme un tableau: 
+    les fichiers sont stockés dans $_FILES['photos'] en PHP sous forme de tableau
+A la place de accept="image/jpeg, image/png" on peut mettre accept="image/*" qui accepte tous les fichiers images-->
+
+
 
     <br>
 
