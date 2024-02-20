@@ -2,7 +2,44 @@
 session_start();
 include('fonctionsCommunes.php');
 require("header.php");
+require('fonctionsCommunes.php');
+
+
+if (!issetNotEmpty($_SESSION)) {
+    header('Location: connexion.php');
+}
+
+//Si le user n'est pas deconnecté par le $sessionLifeTime ou autre (on peut avoir une session active mais ne pas etre connecté)
+if (!issetNotEmpty($_SESSION['user']['id'])) {
+    header('Location: connexion.php');
+}
+
+if (isset($_GET['modif']) && $_GET['modif'] === 'enregSéjourReussi') {
+    echo ('Enregistrement du séjour effectué.');
+}
+/* NPPT est ce qu on fait une re identif pour securiser l'enregistrement du séjour? A voir
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
+    echo ('Veuillez saisir un password valide.');
+}*/
+
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
+    echo ('Veuillez saisir un téléphone ou/et un cp valide.');
+}
+
+
+$idUserSession = $_SESSION['user']['id'];
+$nomBAteau;
+
+$maCon = connexion();
+$stmt = mysqli_stmt_init($maCon);
+$sqlSelect = "SELECT nomBateau FROM bateau WHERE idProp = ?";
+if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
+    $result = mysqli_stmt_execute($stmt);
+}
+
 ?>
+
+
 <div class="h4">
     <h4>Proposer un séjour :</h4>
 </div>
@@ -14,29 +51,23 @@ require("header.php");
 </div>
 
 
+
 <container>
     <form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data">
 
 
         <div class="formConxDiv">
-            <label for="nomBat">Nom de votre bateau</label>
-            <input type="text" class="form-control" name="nomBat" id="nomBat" placeholder="Nom de votre bateau" required>
+            <label for="titreSej">Intitulé du séjour</label>
+            <input type="text" class="form-control" name="titreSej" id="titreSej" required>
         </div><!--Envisager un menu deroulant avec la liste des bateaux du user-->
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="titreSej">Intitulé du séjour</label>
-                <input type="text" class="form-control" name="titreSej" id="titreSej" required>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label for="typeNav">Type de navigation</label>
-                <select class="form-select" aria-label="select">
-                    <option value="1">Hauturier</option>
-                    <option value="2">Côtier</option>
-                    <option value="3">Fluvial</option>
-                </select>
-            </div>
+        <div class="formConxDiv">
+            <label for="typeNav">Nom du bateau</label>
+            <select class="form-select" aria-label="select">
+                <option value="1">value=value="<?php echo $nomBat; ?>"</option>
+                <option value="2">value=value="<?php echo $nomBat; ?>"</option>
+                <option value="3">value=value="<?php echo $nomBat; ?>"</option>
+            </select>
         </div>
 
 
@@ -44,12 +75,14 @@ require("header.php");
             <div class="col-md-6 mb-3">
                 <label for="adresse">Adresse</label>
                 <input type="text" class="form-control" name="adresse" id="adresse" required>
-
+                <small id="textmuted" class="form-text text-muted">
+                    *Si l'adresse est différente du port d'attache
+                </small>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="cp">Code postal</label>
-                <input type="text" class="form-control" name="cp" id="cp" required>
+                <input type="number" class="form-control" name="cp" id="cp" required>
             </div>
         </div>
 
@@ -63,7 +96,7 @@ require("header.php");
 
             <div class="col-md-6 mb-3">
                 <label for="prix">Prix</label>
-                <input type="text" class="form-control" name="prix" id="prix" required>
+                <input type="number" class="form-control" name="prix" id="prix" required>
             </div>
         </div>
         <div class="formConx">

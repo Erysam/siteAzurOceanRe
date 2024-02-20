@@ -9,6 +9,10 @@ if (isset($_GET['enregistrement']) && $_GET['enregistrement'] === 'reussi') {
     echo ('Enregistrement réussi');
 }
 
+if (isset($_GET['erreurNoResult']) && $_GET['erreurNoResult'] === 'noResult') {
+    echo ('Pas de résultat pour ce membre, veuillez-vous connecter');
+}
+
 ?>
 
 <h4>Se connecter</h4>

@@ -1,5 +1,5 @@
 <?php
-
+//NPPT faudra gerer les noms de bateaux poiur qu ils soient unique par propriétaire
 $sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
 session_set_cookie_params($sessionLifetime);
 session_start();
@@ -21,51 +21,57 @@ if (issetNotEmpty($_FILES['photo1']) && issetNotEmpty($_FILES['photo2']) && isse
 
     /*le tableau $_FILES a 3 index (photo1, photo2, photo3) avec un tab de 6 dans chacun des 3 et dans chacun des tab de 6 
    (avec nom du tab, size....)il y a un tab de 1 avec la donnée qu on cherche, pour cette raison l'index recherché est toujours 0*/
-
+    $compteurDerreurParPhoto = [0, 0, 0]; //VOIR COMMENT GERER LES AUTRES ERREURS PLUS TARD
 
     for ($i = 0; $i < 3; $i++) {
-        $compteur = $i + 1;
-        // randomBytes() permet de générer un nom de fichier unique
-        //pathinfo() retourne un tableau associatif contenant le nom du fichier, le nom du répertoire, l'extension du fichier
-        $originalFileName = $_FILES['photo' . $compteur]['name'][0];
-        $extension = pathinfo($originalFileName, PATHINFO_EXTENSION);
-        $randomBytes = bin2hex(random_bytes(8));
-        //var_dump('RANDOMBYTES' . $randomBytes);
 
-        $uniqueFileName = 'photo' . $compteur . $randomBytes . '.' . $extension;
-        //$i est simplement là pour suivre l'iteration
-        //le nom du fichier sera une serie de chiffre et lettre generés par randomBytes suivi de l'extension (.jpg)
-        // Les autres informations du fichier
-        $fileTmpName = $_FILES['photo' . $compteur]['tmp_name'][0]; //chemin temporaire avant d'enregistrer le fichier
-        $fileSize = $_FILES['photo' . $compteur]['size'][0];
-        $fileType = $_FILES['photo' . $compteur]['type'][0];
+        if ($codeErreur == 0) {
+            $compteur = $i + 1;
+            $codeErreur = $_FILES['photo' . $compteur]['error'][0];
+
+            // randomBytes() permet de générer un nom de fichier unique
+            //pathinfo() retourne un tableau associatif contenant le nom du fichier, le nom du répertoire, l'extension du fichier
+            $originalFileName = $_FILES['photo' . $compteur]['name'][0];
+            $extension = pathinfo($originalFileName, PATHINFO_EXTENSION);
+            $randomBytes = bin2hex(random_bytes(8));
+            //var_dump('RANDOMBYTES' . $randomBytes);
+
+            $uniqueFileName = 'photo' . $compteur . $randomBytes . '.' . $extension;
+            //$i est simplement là pour suivre l'iteration
+            //le nom du fichier sera une serie de chiffre et lettre generés par randomBytes suivi de l'extension (.jpg)
+            // Les autres informations du fichier
+            $fileTmpName = $_FILES['photo' . $compteur]['tmp_name'][0]; //chemin temporaire avant d'enregistrer le fichier
+            $fileSize = $_FILES['photo' . $compteur]['size'][0];
+            $fileType = $_FILES['photo' . $compteur]['type'][0];
 
 
-        // In array Vérifier si les param(JPEG ou PNG) dans la variable $allowedIm... sont bien dans le tableau filetype(dans lequel il y a  le type de fichier image)
-        $allowedImageTypes = ['image/jpeg', 'image/png'];
-        //cherche l'aiguille dans la botte de foin
-        if (!in_array($fileType, $allowedImageTypes)) {
-            echo "Erreur : Seuls les fichiers JPEG et PNG sont autorisés.";
-            continue; // Passer au fichier suivant
+            // In array Vérifier si les param(JPEG ou PNG) dans la variable $allowedIm... sont bien dans le tableau filetype(dans lequel il y a  le type de fichier image)
+            $allowedImageTypes = ['image/jpeg', 'image/png'];
+            //cherche l'aiguille dans la botte de foin
+            if (!in_array($fileType, $allowedImageTypes)) {
+                echo "Erreur : Seuls les fichiers JPEG et PNG sont autorisés.";
+                continue; // Passer au fichier suivant
+            }
+
+            $maxFileSize = 2 * 1024 * 1024; // taille max 2MO
+            // Vérifier la taille du fichier
+            if ($fileSize > $maxFileSize) {
+                echo "Erreur : La taille du fichier dépasse la limite autorisée (2 Mo).";
+                continue; // Passer au fichier suivant
+            }
+
+            $destination = "C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/" . $uniqueFileName;
+            move_uploaded_file($fileTmpName, $destination);
+            ${"pathPhoto" . ($compteur)} = $destination;
+            $compteurDerreurParPhoto[$i] = 1;
+            // ${"pathPhoto" . ($compteur)} = $destination;interpolation de variables (variable variable ou variable dynamique)
+        } else {
+            echo ('erreur de téléchargement');
         }
 
-        $maxFileSize = 2 * 1024 * 1024; // taille max 2MO
-        // Vérifier la taille du fichier
-        if ($fileSize > $maxFileSize) {
-            echo "Erreur : La taille du fichier dépasse la limite autorisée (2 Mo).";
-            continue; // Passer au fichier suivant
-        }
-
-        $destination = "C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/" . $uniqueFileName;
-        move_uploaded_file($fileTmpName, $destination);
-        ${"pathPhoto" . ($compteur)} = $destination;
-
-        // ${"pathPhoto" . ($compteur)} = $destination;interpolation de variables (variable variable ou variable dynamique)
+        echo "Tous les fichiers ont été téléchargés avec succès.";
+        var_dump('TABerreurs' . $compteurDerreurParPhoto);
     }
-
-    echo "Tous les fichiers ont été téléchargés avec succès.";
-} else {
-    echo "Aucun fichier n'a été téléchargé.";
 }
 
 if (

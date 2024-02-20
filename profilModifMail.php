@@ -12,8 +12,13 @@ if (!issetNotEmpty($_SESSION)) {
     header('Location: connexion.php');
 }
 
+//Si le user n'est pas deconnecté par le $sessionLifeTime ou autre
+if (!issetNotEmpty($_SESSION['user']['id'])) {
+    header('Location: connexion.php');
+}
+
 if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
-    echo ('Veuillez saisir un email valide.');
+    echo ('Modification reussie.');
 }
 
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
@@ -21,36 +26,44 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
 }
 
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurEmail') {
-    echo ('Veuillez saisir un email valide.');
+    echo ("Veuillez saisir un format d'email valide.");
 }
 
-//Si le user n'est pas deconnecté par le $sessionLifeTime ou autre
-if (!issetNotEmpty($_SESSION['user']['id'])) {
-    header('Location: connexion.php');
-}
 
 $idUserSession = $_SESSION['user']['id'];
-//$mIdMembre;
 $mEmail;
 
 
-$maCon = connexion();
+$maCon = connexion(); //methode pour acceder à ma BDD
 $stmt = mysqli_stmt_init($maCon);
-$sqlSelect = "SELECT email FROM membre WHERE idMembre = $idUserSession";
+$sqlSelect = "SELECT email FROM membre WHERE idMembre = ?";
 
 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
+    mysqli_stmt_bind_param($stmt, "i", $idUserSession);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_bind_result($stmt, $email);
-        if (mysqli_stmt_fetch($stmt)) {
-            $mEmail = $email;
+    if ($result) {
+        mysqli_stmt_store_result($stmt);
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $email);
+            if (mysqli_stmt_fetch($stmt)) {
+                $mEmail = $email;
+            }
+        } else {
+            echo "Aucun résultat trouvé pour ce membre";
+            mysqli_stmt_close($stmt);
+            mysqli_close($maCon);
+            session_destroy();
+            header("Location: connexion.php? erreurNoResult=noResult");
+            exit;
         }
     } else {
-        echo "Aucun résultat trouvé pour ce membre";
+        echo "Erreur lors de l'exécution de la requête ";
     }
+    mysqli_stmt_close($stmt);
+} else {
+    echo "Erreur lors de la préparation de la requête ";
 }
-mysqli_stmt_close($stmt);
 mysqli_close($maCon);
 
 ?>

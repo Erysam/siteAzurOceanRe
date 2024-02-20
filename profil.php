@@ -43,29 +43,39 @@ $mVille;
 $mTel;
 $mMdp;
 
-$maCon = connexion();
+$maCon = connexion(); //methode pour me connecter à ma BDD
 $stmt = mysqli_stmt_init($maCon);
-$sqlSelect = "SELECT * FROM membre WHERE idMembre = $idUserSession";
+$sqlSelect = "SELECT  email, nom, prenom, adresse, cp, ville, tel FROM membre WHERE idMembre = ?";
 
 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
+    mysqli_stmt_bind_param($stmt, "i", $idUserSession);
     $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_bind_result($stmt, $idMembre, $email, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp); //voir pour retirer ou non le mdp, puisque non traité ici, cause sécu
-        if (mysqli_stmt_fetch($stmt)) {
-            //  $mIdMembre = $idMembre;
-            $mEmail = $email;
-            $mNom = $nom;
-            $mPrenom = $prenom;
-            $mAdresse = $adresse;
-            $mCp = $cp;
-            $mVille = $ville;
-            $mTel = $tel;
-            $mMdp = $mdp;
+
+    if ($result) {
+        mysqli_stmt_store_result($stmt);
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+            mysqli_stmt_bind_result($stmt, $email, $nom, $prenom, $adresse, $cp, $ville, $tel);
+            if (mysqli_stmt_fetch($stmt)) {
+                $mEmail = $email;
+                $mNom = $nom;
+                $mPrenom = $prenom;
+                $mAdresse = $adresse;
+                $mCp = $cp;
+                $mVille = $ville;
+                $mTel = $tel;
+                $mMdp = $mdp;
+            }
+        } else {
+            echo "Aucun résultat trouvé pour ce membre";
+            header('Location: connexion.php');
         }
     } else {
-        echo "Aucun résultat trouvé pour ce membre";
+        echo "Erreur lors de l'exécution de la requête : ";
+        //NPPT creer un journal d'erreur afin de consigner les incidents et ne pas les mettre en clair sur le site avec un . mysqli_error($maCon)
+        // on peut config le server php en utilisant la directive error_log, mais faut voir comment ça marche
     }
+} else {
+    echo "Erreur lors de la préparation de la requête : ";
 }
 mysqli_stmt_close($stmt);
 mysqli_close($maCon);

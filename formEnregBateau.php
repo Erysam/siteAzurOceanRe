@@ -31,12 +31,12 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
     <div class="row">
         <div class="">
             <label for="nomBat">Nom de votre bateau</label>
-            <input type="text" class="form-control" name="nomBat" id="nomBat" placeholder="Nom de votre bateau" required>
+            <input type="text" class="form-control" name="nomBat" id="nomBat" placeholder="" required>
         </div>
     </div>
     <div class="row">
         <div class="">
-            <label for="adresse">Adresse</label>
+            <label for="adresse">Adresse / Port d'attache</label>
             <input type="text" class="form-control" name="adresse" id="adresse" required>
 
         </div>
@@ -46,7 +46,7 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="cp">Code postal</label>
-            <input type="text" class="form-control" name="cp" id="cp" required>
+            <input type="number" class="form-control" name="cp" id="cp" required>
         </div>
 
         <div class="col-md-6 mb-3">
@@ -78,13 +78,13 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="taille">taille (en pieds)</label>
-            <input type="text" class="form-control" name="taille" required>
+            <input type="number" class="form-control" name="taille" required>
         </div>
 
         <div class="col-md-6 mb-3">
             <label for="places">Places (par personnes)*</label>
-            <input type="text" class="form-control" name="places" placeholder="" required>
-            <small id="passwordHelp" class="form-text text-muted">
+            <input type="number" class="form-control" name="places" placeholder="" required>
+            <small id="textmuted" class="form-text text-muted">
                 *Recommandation constructeur
             </small>
         </div>
