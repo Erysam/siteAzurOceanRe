@@ -25,20 +25,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
     echo ('Veuillez saisir un téléphone ou/et un cp valide.');
 }
-
-
-$idUserSession = $_SESSION['user']['id'];
-$nomBAteau;
-
-$maCon = connexion();
-$stmt = mysqli_stmt_init($maCon);
-$sqlSelect = "SELECT nomBateau FROM bateau WHERE idProp = ?";
-if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
-    $result = mysqli_stmt_execute($stmt);
-}
-
 ?>
-
 
 <div class="h4">
     <h4>Proposer un séjour :</h4>
@@ -64,9 +51,41 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
         <div class="formConxDiv">
             <label for="typeNav">Nom du bateau</label>
             <select class="form-select" aria-label="select">
-                <option value="1">value=value="<?php echo $nomBat; ?>"</option>
-                <option value="2">value=value="<?php echo $nomBat; ?>"</option>
-                <option value="3">value=value="<?php echo $nomBat; ?>"</option>
+
+                <?php
+                $idUserSession = $_SESSION['user']['id'];
+                $nomBat;
+                $idBat;
+
+                $maCon = connexion(); //methode de connexion à ma BDD 
+                $stmt = mysqli_stmt_init($maCon);
+                $sqlSelect = "SELECT idBateau nomBateau FROM bateau WHERE idProp = ?";
+                if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
+                    mysqli_stmt_bind_param($stmt, "i", $idUserSession);
+                    $result = mysqli_stmt_execute($stmt);
+
+                    if ($result) {
+                        mysqli_stmt_store_result($stmt);
+                        if (mysqli_stmt_num_rows($stmt) > 0) {
+                            mysqli_stmt_bind_result($stmt, $idBat, $nomBat);
+                            $compteur = 1;
+                            while (mysqli_stmt_fetch($stmt)) {
+                                echo "<option value='$idBateau'>$nomBat</option>";
+                            }
+                        } else {
+                            echo "<option value='$compteur' disabled selected>Aucun bateau trouvé</option>";
+                            $compteur++;
+                        }
+                    } else {
+                        echo "Erreur lors de l'exécution de la requête";
+                        exit();
+                    }
+                } else {
+                    echo "Erreur lors de la préparation de la requête";
+                }
+
+                ?>
+
             </select>
         </div>
 
