@@ -1,11 +1,7 @@
 <?php
 //NPPT faudra gerer les noms de bateaux poiur qu ils soient unique par propriétaire
-$sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
-session_set_cookie_params($sessionLifetime);
 session_start();
-
 require('fonctionsCommunes.php');
-include('header.php');
 
 
 if (!issetNotEmpty($_SESSION['user']['id']) || !issetNotEmpty($_SESSION)) {

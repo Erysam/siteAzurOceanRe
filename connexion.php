@@ -1,7 +1,6 @@
 <?php
 session_start();
-session_regenerate_id(true);
-
+session_regenerate_id(true); // inclus en cas de connexion et deconnexion en general
 include('fonctionsCommunes.php');
 include('header.php');
 
@@ -66,9 +65,6 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         mysqli_close($maCon);
 
         if (!$mEmail || !password_verify($mdpSaisi, $mMdp)) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
-            var_dump($mEmail);
-            var_dump($mMdp);
-            var_dump($mdpSaisi);
             die("Identifiant ou mot de passe incorrect.");
         }
 
@@ -78,7 +74,7 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
             "prenom" => $mPren,
             "id" => $mId
         ];
-        session_regenerate_id(true);
+
         header('Location: index.php');
         exit;
     } else {

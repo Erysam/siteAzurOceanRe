@@ -1,7 +1,6 @@
 <?php
 session_start();
 require('fonctionsCommunes.php'); //diff entre include et require, c'est que ce dernier provoque un arret de l'exe alors que include permet au script de continuer 
-require("header.php");
 
 //script pour les fonctions dans util.js appelé par le footer
 

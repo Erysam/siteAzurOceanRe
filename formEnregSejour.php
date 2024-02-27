@@ -1,6 +1,5 @@
 <?php
-session_start();
-include('fonctionsCommunes.php');
+require_once('configSession.php'); // différence avec require, require_ once vérifie si le fichier a déjà été inclus si oui, elle ne l inclusq pas de nouveau
 require("header.php");
 require('fonctionsCommunes.php');
 
@@ -56,10 +55,10 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
                 $idUserSession = $_SESSION['user']['id'];
                 $nomBat;
                 $idBat;
-
+                var_dump($idUserSession);
                 $maCon = connexion(); //methode de connexion à ma BDD 
                 $stmt = mysqli_stmt_init($maCon);
-                $sqlSelect = "SELECT idBateau nomBateau FROM bateau WHERE idProp = ?";
+                $sqlSelect = "SELECT idBateau, nomBateau FROM bateau WHERE idProp = ?";
                 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
                     mysqli_stmt_bind_param($stmt, "i", $idUserSession);
                     $result = mysqli_stmt_execute($stmt);
@@ -70,7 +69,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
                             mysqli_stmt_bind_result($stmt, $idBat, $nomBat);
                             $compteur = 1;
                             while (mysqli_stmt_fetch($stmt)) {
-                                echo "<option value='$idBateau'>$nomBat</option>";
+                                echo "<option value='$idBat'>$nomBat</option>";
                             }
                         } else {
                             echo "<option value='$compteur' disabled selected>Aucun bateau trouvé</option>";

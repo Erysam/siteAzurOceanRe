@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once('configSession.php'); // différence avec require, require_ once vérifie si le fichier a déjà été inclus si oui, elle ne l inclusq pas de nouveau
 require('header.php');
 
 echo  <<<_END
@@ -17,17 +17,6 @@ echo  <<<_END
 _END;
 
 ?>
-<div id="container">
-  <div class="footer">
     <?php
     include('footer.php')
     ?>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-</body>
-
-
-
-</html>

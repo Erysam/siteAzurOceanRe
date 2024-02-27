@@ -1,10 +1,6 @@
 <?php
 
-$sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
-session_set_cookie_params($sessionLifetime);
-
-session_start();
-session_regenerate_id(true);
+require_once('configSession.php');
 require('header.php');
 require('fonctionsCommunes.php');
 
@@ -41,11 +37,12 @@ $sqlSelect = "SELECT email FROM membre WHERE idMembre = ?";
 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     mysqli_stmt_bind_param($stmt, "i", $idUserSession);
     $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
+    // mysqli_stmt_store_result($stmt);
     if ($result) {
         mysqli_stmt_store_result($stmt);
         if (mysqli_stmt_num_rows($stmt) > 0) {
             mysqli_stmt_bind_result($stmt, $email);
+
             if (mysqli_stmt_fetch($stmt)) {
                 $mEmail = $email;
             }

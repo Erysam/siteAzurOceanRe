@@ -1,10 +1,5 @@
 <?php
-
-$sessionLifetime = 1800; //  durée de la session 30mn 60sec x 30mn = 1800 sec
-session_set_cookie_params($sessionLifetime);
-
-session_start();
-session_regenerate_id(true);
+require_once('configSession.php'); // différence avec require, require_ once vérifie si le fichier a déjà été inclus si oui, elle ne l inclusq pas de nouveau
 require('header.php');
 require('fonctionsCommunes.php');
 
@@ -41,7 +36,6 @@ $mAdresse;
 $mCp;
 $mVille;
 $mTel;
-$mMdp;
 
 $maCon = connexion(); //methode pour me connecter à ma BDD
 $stmt = mysqli_stmt_init($maCon);
@@ -63,7 +57,6 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
                 $mCp = $cp;
                 $mVille = $ville;
                 $mTel = $tel;
-                $mMdp = $mdp;
             }
         } else {
             echo "Aucun résultat trouvé pour ce membre";

@@ -1,4 +1,5 @@
 <?php
+require_once('configSession.php');
 include('header.php');
 ?>
 
