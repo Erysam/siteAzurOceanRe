@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+require_once('configSession.php');
 require('fonctionsCommunes.php');
 
 if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['mdpActuel'])) {
