@@ -32,7 +32,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
 
 <div class="img-content">
     <div class="img-conx">
-        <img src="image/voilierDuCiel.jpg" alt="bateaux">
+        <img src="image/zephyredim.jpg" alt="bateaux">
     </div>
 </div>
 
@@ -119,8 +119,9 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
         </div>
         <div class="formConx">
             <label for="formFile">Photo du séjour (max 3 images)</label>
-            <input class="formFile" type="file" name="photos[]" id="formFile" multiple accept="image/*">
-            <!-- A la place de * qui accepte tous les fichiers images, on peut faire ' accept="image/jpeg, image/png, image/gif" ' Accepte uniquement les fichiers JPEG, PNG et GIF.-->
+            <input class="formFile" type="file" name="photo1[]" id="formFile" multiple accept="image/jpeg, image/png">
+            <input class="formFile" type="file" name="photo2[]" id="formFile" multiple accept="image/jpeg, image/png">
+            <input class="formFile" type="file" name="photo3[]" id="formFile" multiple accept="image/jpeg, image/png">
         </div>
 
         <div class="formConxDiv">
