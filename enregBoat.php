@@ -1,6 +1,6 @@
 <?php
 //NPPT faudra gerer les noms de bateaux poiur qu ils soient unique par propriétaire
-session_start();
+require_once('configSession.php');
 require('fonctionsCommunes.php');
 
 
@@ -13,7 +13,7 @@ $pathPhoto1;
 $pathPhoto2;
 $pathPhoto3;
 
-if (issetNotEmpty($_FILES['photo1']) && issetNotEmpty($_FILES['photo2']) && issetNotEmpty($_FILES['photo3'])) {
+if (issetNotEmpty($_FILES['photo1']) || issetNotEmpty($_FILES['photo2']) || issetNotEmpty($_FILES['photo3'])) {
 
     /*le tableau $_FILES a 3 index (photo1, photo2, photo3) avec un tab de 6 dans chacun des 3 et dans chacun des tab de 6 
    (avec nom du tab, size....)il y a un tab de 1 avec la donnée qu on cherche, pour cette raison l'index recherché est toujours 0*/
@@ -21,13 +21,12 @@ if (issetNotEmpty($_FILES['photo1']) && issetNotEmpty($_FILES['photo2']) && isse
 
     for ($i = 0; $i < 3; $i++) {
 
+        $compteur = $i + 1;
+        $codeErreur = $_FILES['photo' . $compteur]['error'][0];
         if ($codeErreur == 0) {
-            $compteur = $i + 1;
-            $codeErreur = $_FILES['photo' . $compteur]['error'][0];
-
             // randomBytes() permet de générer un nom de fichier unique
             //pathinfo() retourne un tableau associatif contenant le nom du fichier, le nom du répertoire, l'extension du fichier
-            $originalFileName = $_FILES['photo' . $compteur]['name'][0];
+            $originalFileName = $_FILES['photo' . $compteur]['name'][0]; //nom original, ne servant que extraire l'extension du fichier dans PATHINFO_EXT ligne 30
             $extension = pathinfo($originalFileName, PATHINFO_EXTENSION);
             $randomBytes = bin2hex(random_bytes(8));
             //var_dump('RANDOMBYTES' . $randomBytes);
@@ -62,11 +61,11 @@ if (issetNotEmpty($_FILES['photo1']) && issetNotEmpty($_FILES['photo2']) && isse
             $compteurDerreurParPhoto[$i] = 1;
             // ${"pathPhoto" . ($compteur)} = $destination;interpolation de variables (variable variable ou variable dynamique)
         } else {
+            $compteurDerreurParPhoto[$i] = 1;
             echo ('erreur de téléchargement');
         }
 
         echo "Tous les fichiers ont été téléchargés avec succès.";
-        var_dump('TABerreurs' . $compteurDerreurParPhoto);
     }
 }
 
