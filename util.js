@@ -15,7 +15,7 @@ function afficheMdp() {
     setTimeout(function () {
         passwordChamp.type = "password";
         confirmPassChamp.type = "password";
-    }, 30000);
+    }, 30000); //30 millisec
 }
 
 //verifie que les deux champs sont identiques (pass et confirmpass)
@@ -53,3 +53,31 @@ function verifMdpChar() {
 
     return true;
 }
+
+
+function verifNumber(input) {
+    var nbrAverif = input.value;
+    var chiffreRegex = /^[0 - 9]+$/; //'^' début de la chaine, '$' fin de la chaine et '+' le chiffre precedent peut apparait plus d'une fois
+    if (!chiffreRegex.test(nbrAverif)) {
+        input.setCustomValidity("Doit contenir uniquement des nombres."); //Message d erreur 'true' donc le form ne peut etre envoyé 
+    } else {
+        input.setCustomValidity(""); //le message est vide donc le form  peut etre envoyé  (même fonctionnement qu un true/false)
+    }
+
+}
+
+function verifNumberCp() {
+    var getCp = document.getElementById("cp").value;
+    var chiffreRegex = [0 - 9];
+    if (!chiffreRegex.test(getCp)) {
+        alert("Le code postal doit contenir uniquement des nombres.");
+        return false;
+    }
+    if (getCp > 1000 && getCp < 98891) {
+        alert("Le code postal doit être valide.")
+        return false;
+    }
+    return true;
+}
+
+
