@@ -29,7 +29,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 // voir a modifier la checkbox par un checkbox bootstarp plus actuel et que le mdp soit masqué automatiquement au bout de quelques secondes
 ?>
 
-<form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar();">
+<form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar() && verifNumberCp();">
 
 
     <div class="formConxDiv">
@@ -59,7 +59,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
         <div class="col-md-6 mb-3">
             <label for="cpP">Code postal </label>
-            <input type="number" class="form-control" name="cp" id="cpP" required>
+            <input type="text" class="form-control" name="cp" id="cpP" required>
         </div>
     </div>
 
@@ -71,7 +71,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
         <div class="col-md-6 mb-3">
             <label for="tel">Téléphone :</label>
-            <input type="number" class="form-control" name="tel" id="tel" required>
+            <input type="text" class="form-control" name="tel" id="tel" oninput="verifNumber(this)" required>
         </div>
     </div>
 

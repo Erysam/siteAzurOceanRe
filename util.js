@@ -56,10 +56,12 @@ function verifMdpChar() {
 
 
 function verifNumber(input) {
+    console.debug("verifNumber => nbrAverif");
     var nbrAverif = input.value;
-    var chiffreRegex = /^[0 - 9]+$/; //'^' début de la chaine, '$' fin de la chaine et '+' le chiffre precedent peut apparait plus d'une fois
+    console.debug(nbrAverif);
+    var chiffreRegex = /^[0-9]*$/; //'^' début de la chaine, '$' fin de la chaine et '+' le chiffre precedent peut apparait plus d'une fois
     if (!chiffreRegex.test(nbrAverif)) {
-        input.setCustomValidity("Doit contenir uniquement des nombres."); //Message d erreur 'true' donc le form ne peut etre envoyé 
+        input.setCustomValidity("Doit contenir uniquement des nombres. !!!"); //Message d erreur 'true' donc le form ne peut etre envoyé 
     } else {
         input.setCustomValidity(""); //le message est vide donc le form  peut etre envoyé  (même fonctionnement qu un true/false)
     }

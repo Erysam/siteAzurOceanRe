@@ -54,12 +54,11 @@ if (issetNotEmpty($_FILES['photo1']) || issetNotEmpty($_FILES['photo2']) || isse
                 echo "Erreur : La taille du fichier dépasse la limite autorisée (2 Mo).";
                 continue; // Passer au fichier suivant
             }
-
-            $destination = "C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/" . $uniqueFileName;
+            $destination = "C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/" . $uniqueFileName; //le chemin de deestination et le nom du fichier
             move_uploaded_file($fileTmpName, $destination);
-            ${"pathPhoto" . ($compteur)} = $destination;
-            $compteurDerreurParPhoto[$i] = 1;
+            ${"pathPhoto" . ($compteur)} = $destination; //j affecte  dans la variable pathPhoto(x) declaré au début du code
             // ${"pathPhoto" . ($compteur)} = $destination;interpolation de variables (variable variable ou variable dynamique)
+            $compteurDerreurParPhoto[$i] = 0;
         } else {
             $compteurDerreurParPhoto[$i] = 1;
             echo ('erreur de téléchargement');
@@ -108,7 +107,6 @@ if (
             // $e types erreurs lors de l'exécution (genre string à la place de int...)
             mysqli_close($maCon);
             header('Location: formEnregBateau.php?erreur=erreur1');
-            die("Une erreur s'est produite lors de l'inscription.");
         }
         // on peut var_dump le code erreur de l exception avec $e->getMessage());
     }

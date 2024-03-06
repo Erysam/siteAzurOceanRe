@@ -21,7 +21,7 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
 
 
 
-<form action="enregBoat.php" method="POST" class="formConx" enctype="multipart/form-data">
+<form action="enregBoat.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
 
     <div class="row">
         <div class="">
@@ -41,7 +41,7 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
     <div class="row">
         <div class="col-md-6 mb-3">
             <label for="cp">Code postal</label>
-            <input type="number" class="form-control" name="cp" id="cp" required>
+            <input type="text" class="form-control" name="cp" id="cp" required>
         </div>
 
         <div class="col-md-6 mb-3">

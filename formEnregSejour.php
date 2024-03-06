@@ -24,6 +24,13 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMdp') {
 if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
     echo ('Veuillez saisir un téléphone ou/et un cp valide.');
 }
+
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurEnreg') {
+    echo ("Erreur d'enregistrement, veuillez recommencer");
+}
+if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
+    echo ('Enregistrement du séjour réussi, voulez vous enregistrer un nouveau séjour?');
+}
 ?>
 
 <div class="h4">
@@ -39,17 +46,28 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
 
 
 <container>
-    <form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data">
+    <form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp()">
 
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="intitule">Intitulé du séjour</label>
+                <input type="text" class="form-control" name="intitule" id="intitule" required>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+                <label for="typeNav">Type de navigation</label>
+                <select class="form-select" aria-label="select" name="typeNav">
+                    <option value="1">Hauturier</option>
+                    <option value="2">Côtier</option>
+                    <option value="3">Fluvial</option>
+                </select>
+            </div>
+        </div>
 
         <div class="formConxDiv">
-            <label for="titreSej">Intitulé du séjour</label>
-            <input type="text" class="form-control" name="titreSej" id="titreSej" required>
-        </div><!--Envisager un menu deroulant avec la liste des bateaux du user-->
-
-        <div class="formConxDiv">
-            <label for="typeNav">Nom du bateau</label>
-            <select class="form-select" aria-label="select">
+            <label for="idBat">Nom du bateau</label>
+            <select class="form-select" aria-label="select" name="idBat">
 
                 <?php
                 $idUserSession = $_SESSION['user']['id'];
@@ -89,34 +107,52 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
         </div>
 
 
+
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" name="adresse" id="adresse" required>
+                <input type="text" class="form-control" name="adresse" id="adresse">
                 <small id="textmuted" class="form-text text-muted">
-                    *Si l'adresse est différente du port d'attache
+                    *Si adresse différente du port d'attache
                 </small>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="cp">Code postal</label>
-                <input type="number" class="form-control" name="cp" id="cp" required>
+                <input type="text" class="form-control" name="cp" id="cp">
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="ville">Ville</label>
-                <input type="text" class="form-control" name="ville" id="ville" required>
+                <input type="text" class="form-control" name="ville" id="ville">
             </div>
-
 
 
             <div class="col-md-6 mb-3">
                 <label for="prix">Prix</label>
-                <input type="number" class="form-control" name="prix" id="prix" required>
+                <input type="text" class="form-control" name="prix" id="prix" oninput="verifNumber(this)" required>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="dateDeb">Date de début de séjour</label>
+                <input type="date" id="start" name="dateDeb" max="2050-12-31" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="dateFin">Date de fin de séjour</label>
+                <input type="date" id="start" name="dateFin" max="2050-12-31" />
+            </div>
+        </div>
+
+        <div class="formConxDiv">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" name="description" id="description" placeholder="Détaillez le séjour proposé" required rows="10"></textarea>
+        </div>
+
         <div class="formConx">
             <label for="formFile">Photo du séjour (max 3 images)</label>
             <input class="formFile" type="file" name="photo1[]" id="formFile" multiple accept="image/jpeg, image/png">
@@ -124,10 +160,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurNum') {
             <input class="formFile" type="file" name="photo3[]" id="formFile" multiple accept="image/jpeg, image/png">
         </div>
 
-        <div class="formConxDiv">
-            <label for="description">Description</label>
-            <textarea type="text" class="form-control" name="descript" id="descript" placeholder="Détaillez le séjour proposé" required rows="10"></textarea>
-        </div>
+
 
         <br>
 
