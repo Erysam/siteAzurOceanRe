@@ -56,12 +56,10 @@ function verifMdpChar() {
 
 
 function verifNumber(input) {
-    console.debug("verifNumber => nbrAverif");
-    var nbrAverif = input.value;
-    console.debug(nbrAverif);
-    var chiffreRegex = /^[0-9]*$/; //'^' début de la chaine, '$' fin de la chaine et '+' le chiffre precedent peut apparait plus d'une fois
+    var nbrAverif = input.value;// console.debug(nbrAverif);
+    var chiffreRegex = /^[0-9]*$/; //'^' début de la chaine, '$' fin de la chaine et '*' le chiffre precedent peut apparait plus d'une fois, alors que + c est uniquent des chiffres repetés
     if (!chiffreRegex.test(nbrAverif)) {
-        input.setCustomValidity("Doit contenir uniquement des nombres. !!!"); //Message d erreur 'true' donc le form ne peut etre envoyé 
+        input.setCustomValidity("Doit contenir uniquement des nombres. !!!"); //Message d erreur 'true' donc le form ne peut etre envoyé setCustomValidity defini un message si le test regex n est pas conforme
     } else {
         input.setCustomValidity(""); //le message est vide donc le form  peut etre envoyé  (même fonctionnement qu un true/false)
     }
@@ -81,5 +79,42 @@ function verifNumberCp() {
     }
     return true;
 }
+
+//si on veut eviter de mettre dans le min de la balise form le php en dur 
+function verifDateMin() {
+    var dateDebInput = document.getElementById('dateDeb');
+    const d = new Date();//date du jour (A verif) Methodes associées possible d.getFullYear, d.getMonth (janvier = 0)), d.getDate pour le jour du mois
+    //pour avoir une date parfaitement standard, new Date().toISOString()
+
+}
+
+function gestionDateDebDateFin() {
+    var dateDebInput = document.getElementById('dateDeb'); //recup les dates de deb et de fin dans les var
+    var dateFinInput = document.getElementById('dateFin');
+
+    if (dateFinInput.value < dateDebInput.value) {
+        alert('Donnée érronée : la date de fin ne peut être antérieur à la date de début');
+        dateFinInput.value = dateDebInput.value; //reinitialise la date de fin sur la date de début
+    }
+
+
+}
+
+/*
+
+document.addEventListener("DOMContentLoaded", function () {//function() est une fonction anonyme utilisée dans le cadre d un callback, elle est utilisée deux fois dans deux contextes différents
+    // addEvent.. ecoute l'evenement sur la page lorsque le Dom est chargé , il commence le script. Function sert de point de depart. En gros à ça dit dés que le DOM est chargé, lance le code qui suit
+    var dateDebInput = document.getElementById('dateDeb'); //recup les dates de deb et de fin dans les var
+    var dateFinInput = document.getElementById('dateFin');
+    // Ajoute un événement de 'change' à l'entrée de date de fin  lors de sa modif par le user
+    dateFinInput.addEventListener('change', function () {// change est une élém predefini de AddEventListener comme 'click' ou 'mouseover'..ici on ecoute une modif faite par le user 
+        // Compare la valeur de date de fin avec la valeur de date de début
+        if (dateFinInput.value < dateDebInput.value) {
+            alert("La date de fin ne peut pas être antérieure à la date de début.");
+            dateFinInput.value = dateDebInput.value; //reinitialisation de la date de fin qui du coup est égale à la date de début 
+        }
+    });
+});
+*/
 
 
