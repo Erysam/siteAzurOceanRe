@@ -10,7 +10,7 @@ if (!issetNotEmpty($_SESSION['user']['id'])) {
 }
 
 $idUser = $_SESSION['user']['id'];
-$photoSej1 = "test";
+$photoSej1;
 $photoSej2;
 $photoSej3;
 
@@ -20,6 +20,7 @@ if (issetNotEmpty($_FILES['photo1']) || issetNotEmpty($_FILES['photo2']) || isse
         for ($i = 0; $i < 3; $i++) {
             $compteur = $i + 1;
             $codeErreur = $_FILES['photo' . $compteur]['error'][0];
+            var_dump(">>>>>>>" . $codeErreur . "<<<<<");
             if ($codeErreur === 0) {
                 //traitement nom fichier
                 $originalFileName = $_FILES['photo' . $compteur]['name'][0]; //nom original, ne servant qu'à extraire l'extension du fichier dans PATHINFO_EXT ligne 30
@@ -48,7 +49,8 @@ if (issetNotEmpty($_FILES['photo1']) || issetNotEmpty($_FILES['photo2']) || isse
 
                 ${'photoSej' . ($compteur)} = $destinationFile;
             } else {
-                throw new UpLoadFileException($_FILES['file']['error']); //je lance et créé l'objet exception en passant le param de class
+                throw new UpLoadFileException($codeErreur); //je lance et créé l'objet exception en passant le param de class
+                echo "<p>Erreur de téléchargement</p>";
             }
         }
     } catch (UpLoadFileException $e) {
@@ -57,10 +59,8 @@ if (issetNotEmpty($_FILES['photo1']) || issetNotEmpty($_FILES['photo2']) || isse
 }
 
 
-//idBat adresse cp ville prix description
-var_dump($_POST);
-
-if (issetNotEmpty($_POST['idBat']) && ($_POST['typeNav']) && ($_POST['intitule']) && issetNotEmpty($_POST['description']) && ($_POST['dateDeb']) && ($_POST['dateFin']) && issetNotEmpty($_POST['adresse']) && issetNotEmpty($_POST['cp']) && issetNotEmpty($_POST['ville']) && issetNotEmpty($_POST['prix'])) {
+if (issetNotEmpty($_POST['idBat']) && ($_POST['typeNav']) && ($_POST['intitule']) && issetNotEmpty($_POST['description']) && ($_POST['dateDeb']) && ($_POST['dateFin']) && issetNotEmpty($_POST['prix'])) {
+    var_dump($_POST['idBat']);
     $sIdBat = ($_POST['idBat']);
     $sTypeNav = ($_POST['typeNav']);
     $sIntitule = ($_POST['intitule']);
@@ -71,12 +71,13 @@ if (issetNotEmpty($_POST['idBat']) && ($_POST['typeNav']) && ($_POST['intitule']
     $sCp = ($_POST['cp']);
     $sVille = ($_POST['ville']);
     $sPrix = ($_POST['prix']);
+
     $maCon = connexion();
-    $sql = mysqli_stmt_init($maCon);
-    $sqlInsert = "INSERT INTO sejour idBateau, typeNavSej, intituleSej, descriptionSej, dateDebutSej, dateFinSej, adresseSej, cpSej, villeSej, prixSej, photoSej1, photoSej2, photoSej3 VALUE (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($maCon);
+    $sqlInsert = "INSERT INTO azurocean.sejour (idSejour, idBateau, typeNavSej, intituleSej, descriptionSej, dateDebutSej, dateFinSej, adresseSej, cpSej, villeSej, prixSej, photoSej1, photoSej2, photoSej3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     if (mysqli_stmt_prepare($stmt, $sqlInsert)) {
-        mysqli_stmt_bind_param($stmt, "iisssssisisss", $sIdBats, $TypeNav, $sIntitule, $sDescription, $sDateDebut, $sDateFin, $sAdresse, $sCp, $sVille, $sPrix, $photoSej1, $photoSej2, $photoSej3);
+        mysqli_stmt_bind_param($stmt, "issssssisisss", $sIdBat, $sTypeNav, $sIntitule, $sDescription, $sDateDebut, $sDateFin, $sAdresse, $sCp, $sVille, $sPrix, $photoSej1, $photoSej2, $photoSej3);
         try {
             $result = mysqli_stmt_execute($stmt);
             mysqli_close($maCon);

@@ -107,7 +107,6 @@ if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
         </div>
 
 
-
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="adresse">Adresse</label>
@@ -139,12 +138,12 @@ if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="dateDeb">Date de début de séjour</label>
-                <input type="date" id="start" name="dateDeb" max="2050-12-31" />
+                <input type="date" id="dateDeb" name="dateDeb" min="<?php echo date('Y-m-d'); ?>" max="2050-12-31" />
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="dateFin">Date de fin de séjour</label>
-                <input type="date" id="start" name="dateFin" max="2050-12-31" />
+                <input type="date" id="dateFin" name="dateFin" max="2050-12-31" onchange="gestionDateDebDateFin()" />
             </div>
         </div>
 
