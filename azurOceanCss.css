@@ -1,42 +1,17 @@
-form .search_cp {
-    font-family: Arial;
-    font-style: normal;
-    position: absolute;
-    border-bottom-color: unset;
-    background: unset;
-    font-size: small;
-    font-family: Arial;
-    color: rgb(255, 251, 251);
-    margin-left: 500px;
-    text-align: center;
-    padding: 12px;
-}
-
+/*header.php*/
 .logo {
     height: 7em;
     width: 7em;
     padding: 12px;
 }
 
-
+/*profil.php*/
 .h4 {
     padding-top: 20px;
     padding-bottom: 10px;
 }
 
-/*
-.img_index .img-conx {
-
-    width: 100%;
-    max-width: 100%;
-    margin-top: 1cm;
-}
-
-.img-content {
-    margin: 0cm;
-    background-color: #252446;
-}
-*/
+/*index.php*/
 .texte_superpose {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -45,6 +20,7 @@ form .search_cp {
     color: rgb(253, 252, 252);
 }
 
+/*class lien sur siteNautique.php et footer.php*/
 .lien:link {
     text-align: right;
     color: #faf3f3;
@@ -63,58 +39,41 @@ form .search_cp {
     text-decoration: none;
 }
 
-.lienConn:link,
-.lienConn:visited {
-    text-decoration: none;
-    font-family: Verdana;
-    font-variant-caps: all-small-caps;
-    color: #ebe9e9;
-}
-
-
+/*footer.php*/
 .footer {
-    bottom: 0;
     width: 100%;
-    height: 100px;
+    height: 100%;
     background-position: center;
     text-align: center;
     background-color: #929191;
-    padding: 10px;
-    left: 0px;
+    padding: 1%;
     display: block;
 }
 
-#main {
-    min-height: 100%;
-    position: relative;
-    padding-bottom: 10px;
-}
 
-.profilLi {
-    text-align: center;
-    list-style-type: none;
-}
 
-/*espacement sur margin top de la barre de recherche en index.php*/
-.me-2 {
-    margin-top: 10px;
+
+/*espacement sur margin top de la barre de recherche en index.php !! ATTENTION SI P EST UTILISE AILLEURS*/
+.me-2,
+p {
+    margin-top: 1%;
 }
 
 
-/*espacement entre les link de la navbar*/
+/*espacement entre les link de la navbar->bootStraps*/
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 2.5rem;
 }
 
-
+/*index.php*/
 .img_index {
     padding-bottom: 20px;
     padding-top: 16px;
 }
 
+/*body dans header.php et formCon dans tous les form*/
 body,
 .formCon {
-    /* background-repeat: no-repeat;*/
     background-color: #929191;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     background-position: center;
@@ -122,16 +81,6 @@ body,
     text-align: center;
 }
 
-.bouton1 {
-    display: block;
-    width: 150px;
-    line-height: 50px;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #5d6166;
-    border-color: #0c0c0c;
-}
 
 .formConx {
     display: inline-table;
@@ -139,11 +88,16 @@ body,
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-.formConxDiv {
-    margin: 0.5cm;
+label {
+    padding-right: 10px;
 }
-*/
+
+label.check {
+    display: flex;
+    margin-left: 10px;
+}
+
+/*toutes les balises input, textarea (formEnregSejour, formEnregBateau dans les descritions) et label*/
 label,
 input,
 textarea {
@@ -154,31 +108,19 @@ textarea {
     border-bottom-color: unset;
 }
 
-.buttonSub {
-    display: block;
-
-}
-
+/*complément textarea*/
 textarea {
     vertical-align: top;
     border-color: rgb(61, 60, 60);
     border-width: 1px;
     border-bottom-color: white;
-    border-bottom-width: 2px
+    border-bottom-width: 2px;
 }
 
-#formFile .formControl,
-#enreg2,
-#enreg {
-    margin-bottom: 10px;
-    display: table-cell;
-    margin-bottom: 10px;
-    background: unset;
-    font-family: Verdana;
-    color: #f5f4f4;
-    font-variant-caps: all-petite-caps;
+/*tous les boutons submit*/
+.buttonSub {
+    display: block;
 }
-
 
 .carousel-inner {
     max-width: 400px;
@@ -199,23 +141,7 @@ textarea {
     /* Masque les parties de l'image qui dépassent du cadre */
 }
 
-
-label {
-    padding-right: 10px;
-}
-
-.liste {
-    background-position: left;
-    text-align: left;
-    line-height: 1.5;
-    margin: 24px 1em 0 0;
-    padding: 30px;
-    font-size: medium;
-    font-family: Arial;
-    font-variant-caps: all-petite-caps;
-    display: inline-flex;
-}
-
+/*dans mentionLeg.php*/
 .cnil:link,
 .cnil:visited {
     text-decoration: underline;
@@ -241,9 +167,10 @@ label {
 /*ce qui se trouve dans l'encadrer du form de formEnregMembre pour le password "inclure une majuscule...."*/
 #pass,
 #confirmPass {
-    font-size: 12px
+    font-size: 12px;
 }
 
+/*text-muted (petit caractères sous les cases) de formEnregBateau.php et formEnregSejour.php*/
 .text-muted {
     color: #f5f8f8 !important;
     margin-top: 5% !important;
@@ -257,7 +184,7 @@ label {
     border-color: #cec8d3;
 }
 
-
+/*siteNautique.php (bouton reservation quand on fait une recherche depuis la barre de recherche de l index) */
 .buttonRes {
     display: inline-flex;
     border: 0;
@@ -278,12 +205,8 @@ label {
     border-color: #dc22ad;
 }
 
-label.check {
-    display: flex;
-    margin-left: 10px;
-}
-
+/*tous les elements des form ayant la terminaison .mb-3 dans leur nom de class*/
 .mb-3 {
     margin-bottom: 1rem !important;
-    margin-top: 1rem !important
+    margin-top: 1rem !important;
 }

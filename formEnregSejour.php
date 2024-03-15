@@ -44,28 +44,17 @@ if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
 </div>
 
 
+<form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
 
-<container>
-    <form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp()">
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="intitule">Intitulé du séjour</label>
-                <input type="text" class="form-control" name="intitule" id="intitule" required>
-            </div>
-
-
-            <div class="col-md-6 mb-3">
-                <label for="typeNav">Type de navigation</label>
-                <select class="form-select" aria-label="select" name="typeNav">
-                    <option value="1">Hauturier</option>
-                    <option value="2">Côtier</option>
-                    <option value="3">Fluvial</option>
-                </select>
-            </div>
-        </div>
-
+    <div class="row">
         <div class="formConxDiv">
+            <label for="intitule">Intitulé du séjour</label>
+            <input type="text" class="form-control" name="intitule" id="intitule" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
             <label for="idBat">Nom du bateau</label>
             <select class="form-select" aria-label="select" name="idBat">
 
@@ -107,69 +96,80 @@ if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
         </div>
 
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" name="adresse" id="adresse">
-                <small id="textmuted" class="form-text text-muted">
-                    *Si adresse différente du port d'attache
-                </small>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label for="cp">Code postal</label>
-                <input type="text" class="form-control" name="cp" id="cp">
-            </div>
+        <div class="col-md-6 mb-3">
+            <label for="typeNav">Type de navigation</label>
+            <select class="form-select" aria-label="select" name="typeNav">
+                <option value="1">Hauturier</option>
+                <option value="2">Côtier</option>
+                <option value="3">Fluvial</option>
+            </select>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="ville">Ville</label>
-                <input type="text" class="form-control" name="ville" id="ville">
-            </div>
+    </div>
 
-
-            <div class="col-md-6 mb-3">
-                <label for="prix">Prix</label>
-                <input type="text" class="form-control" name="prix" id="prix" oninput="verifNumber(this)" required>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="dateDeb">Date de début de séjour</label>
-                <input type="date" id="dateDeb" name="dateDeb" min="<?php echo date('Y-m-d'); ?>" max="2050-12-31" />
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label for="dateFin">Date de fin de séjour</label>
-                <input type="date" id="dateFin" name="dateFin" max="2050-12-31" onchange="gestionDateDebDateFin()" />
-            </div>
-        </div>
-
+    <div class="row">
         <div class="formConxDiv">
-            <label for="description">Description</label>
-            <textarea type="text" class="form-control" name="description" id="description" placeholder="Détaillez le séjour proposé" required rows="10"></textarea>
+            <label for="adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="adresse" placeholder="*Si adresse différente du port d'attache*">
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <label for="cp">Code postal</label>
+            <input type="text" class="form-control" name="cp" id="cp">
         </div>
 
-        <div class="formConx">
-            <label for="formFile">Photo du séjour (max 3 images)</label>
-            <input class="formFile" type="file" name="photo1[]" id="formFile" multiple accept="image/jpeg, image/png">
-            <input class="formFile" type="file" name="photo2[]" id="formFile" multiple accept="image/jpeg, image/png">
-            <input class="formFile" type="file" name="photo3[]" id="formFile" multiple accept="image/jpeg, image/png">
+        <div class="col-md-6 mb-3">
+            <label for="ville">Ville</label>
+            <input type="text" class="form-control" name="ville" id="ville">
         </div>
 
+    </div>
 
-
-        <br>
-
+    <div class="row">
         <div class="formConxDiv">
-            <label class="buttonSub" for="enreg"> <input type="submit" id="enreg" value="Enregistrer"></label>
+            <label for="prix">Prix</label>
+            <input type="text" class="form-control" name="prix" id="prix" oninput="verifNumber(this)" placeholder="*Indiquez le prix total TTC*" required>
         </div>
-    </form>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="dateDeb">Date de début de séjour</label>
+            <input type="date" id="dateDeb" name="dateDeb" min="<?php echo date('Y-m-d'); ?>" max="2050-12-31" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="dateFin">Date de fin de séjour</label>
+            <input type="date" id="dateFin" name="dateFin" max="2050-12-31" onchange="gestionDateDebDateFin()" />
+        </div>
+    </div>
+
+    <div class="formConxDiv">
+        <label for="description">Description</label>
+        <textarea type="text" class="form-control" name="description" id="description" placeholder="Détaillez le séjour proposé" required rows="10"></textarea>
+    </div>
+
+    <div class="formConx">
+        <label for="formFile">Photo du séjour (max 3 images)</label>
+        <input class="formFile" type="file" name="photo1[]" id="formFile" multiple accept="image/jpeg, image/png">
+        <input class="formFile" type="file" name="photo2[]" id="formFile" multiple accept="image/jpeg, image/png">
+        <input class="formFile" type="file" name="photo3[]" id="formFile" multiple accept="image/jpeg, image/png">
+    </div>
 
 
-</container>
+
+    <br>
+
+    <div class="formConxDiv">
+        <label class="buttonSub" for="enreg"> <input type="submit" id="enreg" value="Enregistrer"></label>
+    </div>
+</form>
+
+
+
 
 <?php
 include('footer.php');

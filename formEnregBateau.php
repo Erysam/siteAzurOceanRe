@@ -24,13 +24,14 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
 <form action="enregBoat.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
 
     <div class="row">
-        <div class="">
+        <div class="formConxDiv">
             <label for="nomBat">Nom de votre bateau</label>
             <input type="text" class="form-control" name="nomBat" id="nomBat" placeholder="" required>
         </div>
     </div>
+
     <div class="row">
-        <div class="">
+        <div class="formConxDiv">
             <label for="adresse">Adresse / Port d'attache</label>
             <input type="text" class="form-control" name="adresse" id="adresse" required>
 
