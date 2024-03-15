@@ -5,8 +5,8 @@ include('header.php');
 ?>
 
 <div class="img-content">
-    <div class="img">
-        <img src="image/sunOdyssey391.JPG" alt="rgpd">
+    <div class="imgEnTete">
+        <img src="image/sunOdyssey391.JPG" alt="rgpd" class="imgBord">
     </div>
 </div>
 
@@ -18,7 +18,7 @@ if (!empty($_GET['cp'])) {
 
         $maCon = connexion();
         $stmt = mysqli_stmt_init($maCon);
-        $sqlSelect = "SELECT * FROM sejour WHERE cpSejour = ?"; // Ajoutez la condition appropriée ici
+        $sqlSelect = "SELECT * FROM sejour WHERE cpSej = ?"; // Ajoutez la condition appropriée ici
 
         if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 
@@ -39,7 +39,9 @@ if (!empty($_GET['cp'])) {
                     echo "<br>";
                     echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
                     echo "<br/>";
-                    echo "[ Photo séjour : $sPhoto1 ] ";
+                    echo "<div class=\"imgPhoto\">";
+                    echo "<img src=\"$sPhoto1\" alt=\"Image du séjour\">";
+                    echo "<div/>";
                     echo "<br/>";
                     echo <<<_END
                     <div class="formConxDiv">

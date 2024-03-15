@@ -71,6 +71,24 @@ p {
     padding-top: 16px;
 }
 
+.imgPhoto {
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+}
+
+/*div autour photo enTete de siteNautique.php */
+.imgEnTete {
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+/*liseré sur photo enTete de siteNautique.php*/
+.imgBord {
+    border: 2px solid rgb(70, 66, 66);
+}
+
 /*body dans header.php et formCon dans tous les form*/
 body,
 .formCon {
