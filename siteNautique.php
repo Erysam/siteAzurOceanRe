@@ -40,7 +40,7 @@ if (!empty($_GET['cp'])) {
                     echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
                     echo "<br/>";
                     echo "<div class=\"imgPhoto\">";
-                    echo "<img src=\"$sPhoto1\" alt=\"Image du séjour\">";
+                    echo "<img src=\"photoAffiche.php?idSej=$sIdSej\" alt=\"Image du séjour\">";
                     echo "<div/>";
                     echo "<br/>";
                     echo <<<_END
