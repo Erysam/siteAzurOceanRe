@@ -103,9 +103,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
     </div>
     <div class="h4">
         <h5>
-            <font style="color:white">Afin d'activez vos modifications,
-                <br> un email vous sera envoyé pour validation
-            </font>
+            <font style="color:white">un email de confirmation vous sera envoyé</font>
         </h5>
     </div>
 
