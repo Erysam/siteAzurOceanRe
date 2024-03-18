@@ -33,21 +33,3 @@ function verifMdpCharPhp($password)
 
     return true;
 }
-
-//permet d afficher l image dans le navigateur par un script php sans avoir à passer par l url (+ sécurisé)
-function affichePhoto($photoPath)
-{
-    if (file_exists($photoPath)) {
-        // recup le type MIME de l'image
-        $imageInfo = getimagesize($photoPath);
-        $contentType = $imageInfo['mime'];
-
-        // envoi l en-tête http avec type de contenu
-        header("Content-type: $contentType");
-
-        // Lit contenu de l'image et l'envoie au navigateur
-        readfile($photoPath);
-    } else {
-        echo "Image not found.";
-    }
-}
