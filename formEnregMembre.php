@@ -31,7 +31,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
 <form action="enregMembre.php" method="POST" class="formConx onsubmit=" onsubmit="return verifierMotDePasse() && verifMdpChar() && verifNumberCp();">
 
-
+    <h5>Un mail vous sera envoyé pour activer le compte.</h5>
     <div class="formConxDiv">
         <label for="mail">Email</label>
         <input type="email" class="form-control" name="email" id="mail" placeholder="name@exemple.com" required>
@@ -52,6 +52,7 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
 
 
     <div class="row">
+
         <div class="col-md-6 mb-3">
             <label for="adresse">Adresse : </label>
             <input type="text" class="form-control" name="adresse" id="adresse" required>
@@ -61,9 +62,11 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
             <label for="cpP">Code postal </label>
             <input type="text" class="form-control" name="cp" id="cpP" required>
         </div>
+
     </div>
 
     <div class="row">
+
         <div class="col-md-6 mb-3">
             <label for="ville">Ville :</label>
             <input type="text" class="form-control" name="ville" id="ville" required>
@@ -73,37 +76,40 @@ if (isset($_GET['erreur']) && $_GET['erreur'] === 'duplication') {
             <label for="tel">Téléphone :</label>
             <input type="text" class="form-control" name="tel" id="tel" oninput="verifNumber(this)" required>
         </div>
+
     </div>
 
-    <div class="passwordHelp">
-        <small id="passwordHelp" class="form-text text-muted">
-            Inclure au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
-        </small>
-    </div>
+
 
     <div class="row">
+
         <div class="col-md-6 mb-3">
             <label for="pass">Password:</label>
-            <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="8 caractères minimum">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
-            </div>
+            <input type="password" class="form-control" id="pass" name="mdp" minlength="8" required placeholder="8 caractères minimum*">
         </div>
 
         <div class="col-md-6 mb-3">
             <label for="confirmPass">Confirmer le password:</label>
-            <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" required placeholder="8 caractères minimum">
-
+            <input type="password" class="form-control" id="confirmPass" name="confirmMdp" minlength="8" required placeholder="8 caractères minimum*">
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
         </div>
     </div>
 
-
+    <div class="formConxDiv">
+        <small id="passwordHelp" class="form-text text-muted">
+            *Inclure au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
+        </small>
+    </div>
 
     <br />
     <div class="formConxDiv">
         <label class="buttonSub" for="enreg"> <input type="submit" id="enreg" value="Enregistrer"></label>
     </div>
+
+
 </form>
 
 
