@@ -25,7 +25,6 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
     $ville = strip_tags($_POST['ville']);
     $tel = strip_tags($_POST['tel']);
 
-
     //fonction php avec regex pour etre sur que le mdp est bien valide, si tentative à ce stade là, malveillance probable, pas de sortie propre) 
     if (verifMdpCharPhp($mdp)) {
         $mdp = password_hash($_POST['mdp'], PASSWORD_ARGON2ID);
@@ -45,24 +44,34 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
         header('Location: formEnregMembre.php?erreur=erreurNum');
         die("Code postal ou tél erronés.");
     }
+    $cle = md5(microtime(true) * 100000);
+    $messageActivationMail = 'Bienvenue sur VotreSite,
+ 
+    Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
+    ou copier/coller dans votre navigateur Internet.
+     
+    http://localhost/siteAzurOceanRe/validationCompte.php=' . '&mail=' . urlencode($mail) . '&cle=' . urlencode($cle) . '
+     
+    ---------------
+    Ceci est un mail automatique, Merci de ne pas y répondre.';
+
 
     $maCon = connexion();
     $stmt = mysqli_stmt_init($maCon);
-    $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, mdp) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlInser = "INSERT INTO azurocean.membre (idMembre, email, nom, prenom, adresse, cp, ville, tel, mdp, cle) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     //(NULL, '$mail','$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$mdp')";
 
     if (mysqli_stmt_prepare($stmt, $sqlInser)) {
         //s'assurer que la préparation de la requête est correcte avant exécution
 
-        mysqli_stmt_bind_param($stmt, "ssssisis", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp); /* le nbre de s represente le nbre de ? et le s pour des 
+        mysqli_stmt_bind_param($stmt, "ssssisis", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp, $cle); /* le nbre de s represente le nbre de ? et le s pour des 
     valeurs string dans la table et i pour les valeur int dans la table (le NULL n'est pas à compter dans les i ou s)*/
 
         try {
             $result = mysqli_stmt_execute($stmt);
             mysqli_close($maCon);
-            header('Location: connexion.php?enregistrement=reussi'); //le exit ou die n a pas sa place, car header termine le script php automatiquement 
-
-
+            mail($mail, "activez votre nouveau compte", "From emailazurocean888@gmail.com\r\nReply-To:contact@azurocean.fr ", $messageActivationMail);
+            header('Location: validationCompte.php'); //le exit ou die n a pas sa place, car header termine le script php automatiquement 
         } catch (mysqli_sql_exception $e) { //$e instance de classe mysqli-sql-exception pour acceder à la methode getMessage() afin d avoir un piste sur l'erreur.)
 
             // Vérif violation clé d'unicité grace au code erreur de duplicité errno 1062
