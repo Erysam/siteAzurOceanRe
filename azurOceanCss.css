@@ -71,6 +71,7 @@ p {
     padding-top: 16px;
 }
 
+/*en plus des photos des users , la photo de la page validationCompte.php*/
 .imgPhoto {
     padding-top: 3%;
     padding-bottom: 3%;
@@ -113,6 +114,7 @@ label {
 label.check {
     display: flex;
     margin-left: 10px;
+    margin-top: 3%;
 }
 
 /*toutes les balises input, textarea (formEnregSejour, formEnregBateau dans les descritions) et label*/
