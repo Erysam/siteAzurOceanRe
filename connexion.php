@@ -5,7 +5,7 @@ include('fonctionsCommunes.php');
 include('header.php');
 
 if (isset($_GET['enregistrement']) && $_GET['enregistrement'] === 'reussi') {
-    echo ('Enregistrement réussi');
+    echo ('Enregistrement réussi, votre compte est activé');
 }
 
 if (isset($_GET['erreurNoResult']) && $_GET['erreurNoResult'] === 'noResult') {
@@ -14,16 +14,18 @@ if (isset($_GET['erreurNoResult']) && $_GET['erreurNoResult'] === 'noResult') {
 
 ?>
 
-<h4>Se connecter</h4>
+<div class="h4">
+    <h4>Se connecter</h4>
+</div>
+
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>
 <div>
 
 </div>
-
 
 <form class="formConx" method="POST" action="connexion.php">
     <div class="formConxDiv">
@@ -56,15 +58,15 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         $userEmail = strip_tags($_POST['username']);
         $mdpSaisi = $_POST['password'];
         $maCon = connexion();
-        $stmt = $maCon->prepare("SELECT idMembre, email, nom, prenom, mdp FROM membre WHERE email = ?");
+        $stmt = $maCon->prepare("SELECT idMembre, email, nom, prenom, mdp, actif FROM membre WHERE email = ?");
         $stmt->bind_param("s", $userEmail);
         $stmt->execute();
-        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mMdp);
+        $stmt->bind_result($mId, $mEmail, $mNom, $mPren, $mMdp, $mActif);
         $stmt->fetch();
         $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
         mysqli_close($maCon);
 
-        if (!$mEmail || !password_verify($mdpSaisi, $mMdp)) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
+        if (!$mEmail || !password_verify($mdpSaisi, $mMdp) && $mActif != 1) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
             die("Identifiant ou mot de passe incorrect.");
         }
 
@@ -78,7 +80,8 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         header('Location: index.php');
         exit;
     } else {
-        die("Veuillez remplir tous les champs");
+
+        die("");
     }
 }
 include('footer.php')
