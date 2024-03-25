@@ -64,7 +64,7 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
     if (mysqli_stmt_prepare($stmt, $sqlInser)) {
         //s'assurer que la préparation de la requête est correcte avant exécution
 
-        mysqli_stmt_bind_param($stmt, "ssssisis", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp, $cle); /* le nbre de s represente le nbre de ? et le s pour des 
+        mysqli_stmt_bind_param($stmt, "ssssisiss", $mail, $nom, $prenom, $adresse, $cp, $ville, $tel, $mdp, $cle); /* le nbre de s represente le nbre de ? et le s pour des 
     valeurs string dans la table et i pour les valeur int dans la table (le NULL n'est pas à compter dans les i ou s)*/
 
         try {
