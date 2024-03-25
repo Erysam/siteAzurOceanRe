@@ -12,6 +12,14 @@ if (isset($_GET['erreurNoResult']) && $_GET['erreurNoResult'] === 'noResult') {
     echo ('Pas de résultat pour ce membre, veuillez-vous connecter');
 }
 
+if (isset($_GET['erreur']) && $_GET['erreur'] === 'erreurMailOuMdp') {
+    echo ('Veuillez saisir un mot de passe ou un mail valide');
+}
+
+if (isset($_GET['erreurCpteNonActif']) && $_GET['erreurCpteNonActif'] === 'noActif') {
+    echo ('Veuillez valider le mail d\'activation qui vous a été envoyé sur votre adresse email');
+}
+
 ?>
 
 <div class="h4">
@@ -46,7 +54,7 @@ if (isset($_GET['erreurNoResult']) && $_GET['erreurNoResult'] === 'noResult') {
 <h5>Si vous n'avez pas de compte, vous pouvez vous enregistrer :</h5>
 <div class="container">
     <div class="formConxDiv">
-        <a href="formEnregMembre.php" class="buttonstyle" type="button">S'enregistrer</a>
+        <a href="formEnregMembre.php" class="" type="link">S'enregistrer</a>
     </div>
 </div>
 <?php
@@ -66,8 +74,16 @@ if (!empty($_POST)) { //cela permet de ne pas aller direct sur le else quand on 
         $stmt->close(); //le stmt close ne ferme pas la connexion à la bd
         mysqli_close($maCon);
 
-        if (!$mEmail || !password_verify($mdpSaisi, $mMdp) && $mActif != 1) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
+        if (!$mEmail || !password_verify($mdpSaisi, $mMdp)) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
+            //  echo 'Veuillez valider le mail d\'activation qui vous a été envoyé sur votre adresse email';
+            header("Location: connexion.php?erreur=erreurMailOuMdp");
             die("Identifiant ou mot de passe incorrect.");
+        }
+
+        if ($mActif != 1) { // si mMail est vide ou false c'ets que le mail ne correspond pas (en gros la comparaison se fait durant la requete) 
+            //  echo 'Veuillez valider le mail d\'activation qui vous a été envoyé sur votre adresse email';
+            header("Location: connexion.php?erreurCpteNonActif=noActif");
+            die("Compte non actif.");
         }
 
         $_SESSION["user"] = [
