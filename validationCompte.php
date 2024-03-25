@@ -19,19 +19,25 @@ include('header.php');
 
 if (!empty($_GET)) {
     if (issetNotEmpty($_GET['mail']) && issetNotEmpty($_GET['cle'])) {
+        $idM;
+        $actifValid = 1;
         $mail = strip_tags($_GET['mail']);
         $cle = $_GET['cle'];
         $cleRequete;
         $maCon = connexion();
-        $stmt = $maCon->prepare("SELECT cle FROM membre WHERE email = ?");
+        $stmt = $maCon->prepare("SELECT cle, idMembre FROM membre WHERE email = ?");
         $stmt->bind_param("s", $mail);
         $stmt->execute();
-        $stmt->bind_result($cleRequete);
+        $stmt->bind_result($cleRequete, $idM);
         $stmt->fetch();
         $stmt->close();
         if ($cle == $cleRequete) {
+            $stmt = $maCon->prepare("UPDATE membre SET actif = ? WHERE idmembre = ?");
+            $stmt->bind_param("ii", $actifValid, $idM);
+            $stmt->execute();
             mysqli_close($maCon);
             header('Location: connexion.php?enregistrement=reussi');
+            exit;
         }
     } else {
         mysqli_close($maCon);
