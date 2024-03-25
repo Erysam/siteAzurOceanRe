@@ -50,7 +50,7 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
     Pour activer votre compte, veuillez cliquer sur le lien ci-dessous
     ou copier/coller dans votre navigateur Internet.
      
-    http://localhost/siteAzurOceanRe/validationCompte.php=' . '&mail=' . urlencode($mail) . '&cle=' . urlencode($cle) . '
+    http://localhost/siteAzurOceanRe/validationCompte.php?mail=' . urlencode($mail) . '&cle=' . urlencode($cle) . '
      
     ---------------
     Ceci est un mail automatique, Merci de ne pas y répondre.';
@@ -70,7 +70,11 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['nom']) && issetNotEm
         try {
             $result = mysqli_stmt_execute($stmt);
             mysqli_close($maCon);
-            mail($mail, "activez votre nouveau compte", "From emailazurocean888@gmail.com\r\nReply-To:contact@azurocean.fr ", $messageActivationMail);
+            $mailActivation = mail($mail, "activez votre nouveau compte", "From emailazurocean888@gmail.com\r\nReply-To:emailazurocean888@gmail.com ", $messageActivationMail);
+            if (!$mailActivation) {
+                $errorMessageMailActiv = error_get_last()['message'];
+                var_dump($errorMessageMailActiv);
+            }
             header('Location: validationCompte.php'); //le exit ou die n a pas sa place, car header termine le script php automatiquement 
         } catch (mysqli_sql_exception $e) { //$e instance de classe mysqli-sql-exception pour acceder à la methode getMessage() afin d avoir un piste sur l'erreur.)
 
