@@ -7,6 +7,7 @@ include('header.php');
 <div class="h4">
     <h4>Après validation du mail d'activation, vous pouvez saisir vos données :</h4>
 </div>
+<a href="connexion.php">Se connecter</a>
 
 <div class="img-content">
     <div class="imgPhoto">
