@@ -7,6 +7,9 @@ include('fonctionsCommunes.php');
 ?>
 
 <?php
+if (isset($_GET['resa']) === 'emptyResa') {
+    echo 'Veuillez choisir un séjour afin de pouvoir faire une résevervation';
+}
 
 $maCon = connexion();
 $stmt = mysqli_stmt_init($maCon);
