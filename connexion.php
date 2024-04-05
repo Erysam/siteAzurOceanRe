@@ -20,6 +20,10 @@ if (isset($_GET['erreurCpteNonActif']) && $_GET['erreurCpteNonActif'] === 'noAct
     echo ('Veuillez valider le mail d\'activation qui vous a été envoyé sur votre adresse email');
 }
 
+if (isset($_GET['resa']) === 'emptyID') {
+    echo 'Veuillez vous connecter ou vous enregistrer afin de faire une réservation';
+}
+
 ?>
 
 <div class="h4">
