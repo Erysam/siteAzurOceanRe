@@ -8,10 +8,9 @@ echo  <<<_END
 
 <h3>8 avenue des 50es Hurlants <br/>
 88088 Nepture/mer <br/</h3>
-<h4>Tél : 01 48 08 88 08 
-</h4>
+<h4>Tél : 01 48 08 88 08 </h4>
 
-<h4>contact@azurocean.fr</h4>
+<h4>azurOcean@protonmail.com</h4>
 
 
 _END;
