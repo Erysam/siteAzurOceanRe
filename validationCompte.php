@@ -2,8 +2,16 @@
 require_once('configSession.php'); // différence avec require, require_ once vérifie si le fichier a déjà été inclus si oui, elle ne l inclusq pas de nouveau
 require('fonctionsCommunes.php');
 include('header.php');
-?>
 
+if (isset($_GET['erreurMail'])) {
+    $messageDerreurMail = $_GET['erreurMail'];
+    $vd = var_dump($_GET['erreurMail']);
+    echo 'Message mail valid : ' . var_dump($_GET['erreurMail']);
+} else if (!isset($_GET['erreurMail'])) {
+    $vd = var_dump($messageDerreurMail);
+    echo 'Pas d erreur : ' . $vd;
+}
+?>
 <div class="h4">
     <h4>Après validation du mail d'activation, vous pouvez saisir vos données :</h4>
 </div>
