@@ -12,13 +12,13 @@ include('header.php');
 
 <?php
 if (!empty($_GET['cp'])) {
-    if (issetNotEmpty($_GET['cp']) && (is_numeric($_GET['cp'])) && (strlen($_GET['cp']) == 5)) {
+    if (issetNotEmpty($_GET['cp']) && (isFiveNumber($_GET['cp']) == 5)) {
 
         $cp = $_GET['cp'];
 
         $maCon = connexion();
         $stmt = mysqli_stmt_init($maCon);
-        $sqlSelect = "SELECT * FROM sejour WHERE cpSej = ?"; // Ajoutez la condition appropriée ici
+        $sqlSelect = "SELECT * FROM sejour WHERE cpSej = ?";
 
         if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 
@@ -31,7 +31,7 @@ if (!empty($_GET['cp'])) {
                 mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
 
                 while (mysqli_stmt_fetch($stmt)) {
-                    // Traitez chaque ligne de résultat ici
+
                     echo "<br/>";
                     echo "<h1> Séjour dans la ville de $sVille ($sCp) </h1>";
                     echo " [ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ]";
@@ -40,7 +40,25 @@ if (!empty($_GET['cp'])) {
                     echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
                     echo "<br/>";
                     echo "<div class=\"imgPhoto\">";
-                    echo "<img src=\"photoAffiche.php?idSej=$sIdSej\" alt=\"Image du séjour\">";
+
+                    for ($i = 0; $i < 3; $i++) {
+                        $sPhoto = ${"sPhoto" . $i + 1};
+                        $photoPath = $sPhoto . $i + 1;
+
+                        if (isset($photoPath)) {
+                            $photoData = affichePhoto($photoPath);
+                            if ($photoData) {
+                                header("Content-type: " . $photoData['contentType']);
+                                echo $photoData['content'];
+                            } else {
+                                var_dump($photoData);
+                                echo 'ERREUR';
+                            }
+                        } else {
+                            echo var_dump($photoPath);
+                            echo 'image non trouvée';
+                        }
+                    }
                     echo "<div/>";
                     echo "<br/>";
                     echo <<<_END
