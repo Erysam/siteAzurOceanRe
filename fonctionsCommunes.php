@@ -2,8 +2,8 @@
 
 function issetNotEmpty($var1)
 {
-    $IssEmpt = isset($var1) && !empty($var1);
-    return $IssEmpt;
+    $IssNoEmpt = isset($var1) && !empty($var1);
+    return $IssNoEmpt;
 }
 
 
@@ -32,4 +32,34 @@ function verifMdpCharPhp($password)
     }
 
     return true;
+}
+
+
+function isFiveNumber($var1) // pour siteNautique.php pour verif cp
+{
+    $isFiveNum = is_numeric($var1) && (strlen($var1) === 5); //strlen utilisé avce l égalité stricte va vérifier q'il y a bien 5 char et isNumeric que ce sont bien des nombres
+    return $isFiveNum;
+}
+
+
+function affichePhoto($photoPath)
+{
+    if (isset(($photoPath))) {
+        // recup le type MIME de l'image
+        $imageInfo = getimagesize($photoPath);
+        $contentType = $imageInfo['mime'];
+
+        // envoi l en-tête http avec type de contenu
+        ob_start();
+        readfile($photoPath);
+        $imageContent = ob_get_clean();
+
+        // Lit contenu de l'image et l'envoie au navigateur
+        return array(
+            'contentType' => $contentType,
+            'content' => $imageContent
+        );
+    } else {
+        return false;
+    }
 }
