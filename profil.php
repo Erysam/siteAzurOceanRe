@@ -48,16 +48,8 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     if ($result) {
         mysqli_stmt_store_result($stmt);
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $email, $nom, $prenom, $adresse, $cp, $ville, $tel);
-            if (mysqli_stmt_fetch($stmt)) {
-                $mEmail = $email;
-                $mNom = $nom;
-                $mPrenom = $prenom;
-                $mAdresse = $adresse;
-                $mCp = $cp;
-                $mVille = $ville;
-                $mTel = $tel;
-            }
+            mysqli_stmt_bind_result($stmt, $mEmail, $mNom, $mPrenom, $mAdresse, $mCp, $mVille, $mTel);
+            mysqli_stmt_fetch($stmt);
         } else {
             echo "Aucun résultat trouvé pour ce membre";
             header('Location: connexion.php');

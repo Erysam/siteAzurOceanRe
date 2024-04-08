@@ -41,11 +41,8 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
     if ($result) {
         mysqli_stmt_store_result($stmt);
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $email);
-
-            if (mysqli_stmt_fetch($stmt)) {
-                $mEmail = $email;
-            }
+            mysqli_stmt_bind_result($stmt, $mEmail);
+            mysqli_stmt_fetch($stmt);
         } else {
             echo "Aucun résultat trouvé pour ce membre";
             mysqli_stmt_close($stmt);
