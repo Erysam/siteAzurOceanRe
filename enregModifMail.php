@@ -42,7 +42,7 @@ if (issetNotEmpty($_POST['email']) && issetNotEmpty($_POST['mdpActuel'])) {
             $result = mysqli_stmt_execute($stmt);
             $stmt->close();
             mysqli_close($maCon);
-            header('Location: profilModifMdp.php?modif=modifReussie');
+            header('Location: profilModifMail.php?modif=modifReussie');
             //envoi d 'un email pour informer de la modification aux deux emails(ancien et nouveau avec la focntion mail) 
             //la fonction mail prend en param : <adresse du destinataire>,<titre du mail>,<corps du message>,<entête>);
             mail($pEmail, "modification de votre email", "Nous vous informons de la modification de votre email", "From emailazurocean888@gmail.com\r\nReply-To:contact@azurocean.fr");
