@@ -1,4 +1,5 @@
 <div id="container">
+
     <div class="footer">
         <footer>
             <a class="lien" href="mentionLeg.php">Mentions légales</a>
