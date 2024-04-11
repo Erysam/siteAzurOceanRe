@@ -9,16 +9,24 @@ include('fonctionsCommunes.php');
 </div>
 
 <div class="img-content">
-    <div class="img-conx">
-        <img src="image/chaisesLongues.jpg" alt="chaises longues, barques face à la mer et au soleil">
+    <div class="imgEnTete">
+        <img src="image/chaisesLongues.jpg" class="imgBord" alt="chaises longues, barques face à la mer et au soleil">
     </div>
 </div>
 <br>
 
 <?php
+
 if (!issetNotEmpty($_SESSION)) {
     header('Location: connexion.php?resa=emptyID');
+    exit;
 }
+
+/*
+if (!isset($_POST['idSejour'])) {
+    header('Location: sejours.php?resa=emptyResa');
+    exit;
+}*/
 if (issetNotEmpty($_POST['idSejour'])) {
     $sIdBat;
     $sTypeNav;
@@ -50,36 +58,75 @@ if (issetNotEmpty($_POST['idSejour'])) {
         if (mysqli_stmt_num_rows($stmt) > 0) {
             mysqli_stmt_bind_result($stmt, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
             mysqli_stmt_fetch($stmt);
+            echo '<div class=container>';
             echo "<br>";
+            echo "<div lisere>";
             echo "<h1> Séjour dans la ville de $sVille ($sCp) </h1>";
-            echo " [ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ]";
-            echo " [ <font style=\"color:purple\">Date début : $sDateDeb</font> ] [ <font style=\"color:green\">Date fin : $sDateDeb</font> ]";
-            echo "<br>";
-            echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
-            echo "<br>";
-            //  echo "<div class=\"imgPhoto\">";
+            echo '</div>';
+
             echo <<<_END
             <div>
-
             <img src="$sPhoto1" class="imgSejResa" alt="photo sejour" class="imgBord" style="max-width: 300px; max-height: 300px;">
             <img src="$sPhoto2" class="imgSejResa" alt="photo sejour" class="imgBord" style="max-width: 300px; max-height: 300px;">
             <img src="$sPhoto3" class="rounded mx-auto d-block" alt="photo sejour" class="imgBord" style="max-width: 300px; max-height: 300px;">
             </div>
             <br>
             _END;
-            /*
-            echo '<img src="' . $sPhoto2 . '" alt="photo sejour" class="imgBord" style="max-width: 300px; max-height: 300px;">';
-            echo '<img src="' . $sPhoto3 . '" alt="photo sejour" class="imgBord" style="max-width: 300px; max-height: 300px;">';*/
-            echo "</div>";
+
+            echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
+            echo "<br>";
+            echo " [ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ]";
+            echo " [ <font style=\"color:purple\">Date début : $sDateDeb</font> ] [ <font style=\"color:green\">Date fin : $sDateDeb</font> ]";
+            echo '</div>';
+            echo "<br>";
         }
+    } else {
+        mysqli_stmt_close($stmt);
+        mysqli_close($maCon);
+        header('Location: sejours.php?resa=emptyResa');
+        exit;
     }
 } else {
-    mysqli_stmt_close($stmt);
-    mysqli_close($maCon);
-    header('Location: sejour.php?resa=emptyResa');
+    header('Location: index.php');
     exit;
 }
 ?>
+
+
+
+<form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
+
+    <div class="row">
+        <div class="formConxDiv">
+            <label for="intitule">Intitulé du séjour</label>
+            <input type="text" class="form-control" name="intitule" id="intitule" required>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="idBat">Nombre de personne</label>
+            <select class="form-select" aria-label="select" name="idBat">
+                <option value='1'>1</option>
+            </select>
+            </select>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+            <label for="typeNav">Type de navigation</label>
+            <select class="form-select" aria-label="select" name="typeNav">
+                <option value="1">Hauturier</option>
+                <option value="2">Côtier</option>
+                <option value="3">Fluvial</option>
+            </select>
+        </div>
+
+    </div>
+
+
+</form>
+
 <?php
 include('footer.php')
 ?>
