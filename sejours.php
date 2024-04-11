@@ -8,7 +8,7 @@ include('fonctionsCommunes.php');
 
 <?php
 if (isset($_GET['resa']) && $_GET['resa'] === 'emptyResa') {
-    echo "<div class=alertMessage>";
+    echo "<div class='alertMessage'>";
     echo ('Veuillez choisir un séjour afin de pouvoir faire une réservation');
     echo "</div>";
 }
