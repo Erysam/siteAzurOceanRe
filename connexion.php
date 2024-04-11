@@ -48,6 +48,10 @@ if (isset($_GET['resa']) === 'emptyID') {
     <div class="formConxDiv">
         <label for="pass">Mot de passe : </label>
         <input type="password" class="form-control" id="pass" name="password" required>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="afficheMdp()">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Afficher le mot de passe</label>
+        </div>
     </div>
 
     <div class="formConxDiv">
