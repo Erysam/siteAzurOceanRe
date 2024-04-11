@@ -73,12 +73,13 @@ p {
 
 /*liseré sur photo enTete de siteNautique.php*/
 .imgBord {
-    border: 2px solid rgb(70, 66, 66);
+    border: 1px solid rgb(250, 245, 245);
 }
 
 .imgSejResa {
     padding: 20px;
-
+    /*arrondis Photo*/
+    border-radius: 25px;
     color: #6f6d6d;
     max-width: 300px;
     max-height: 300px;
@@ -231,7 +232,7 @@ body {
     margin-top: 1rem !important;
 }
 
-
+/*
 #canvasContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -242,7 +243,7 @@ body {
     width: 100%;
     height: auto;
     border: 1px solid black;
-}
+}*/
 
 .footer {
 
@@ -255,7 +256,16 @@ body {
     border-top: 14px;
 }
 
+/*message invitant à choisir un sej pour reserver apres redir sur sejour.php depuis la page reservation.php 
+quand l'idSejour est abs ou quand on clique sur le lien faire une reservation (ce lien est en travaux..)*/
 .alertMessage {
     font-size: large;
     color: #961c1c;
+    font-weight: bold;
+}
+
+/*dans reservation.php*/
+.titreResa {
+    color: white;
+    font-weight: bold;
 }
