@@ -67,7 +67,7 @@ mysqli_close($maCon);
     <h4>Modifier votre Email: <?php echo $mEmail; ?></h4>
 </div>
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>

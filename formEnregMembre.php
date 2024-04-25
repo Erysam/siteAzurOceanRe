@@ -8,7 +8,7 @@ include('header.php');
 </div>
 
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>

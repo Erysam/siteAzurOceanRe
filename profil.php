@@ -72,7 +72,7 @@ mysqli_close($maCon);
     <h4>Conserver ou modifier vos données existantes:</h4>
 </div>
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>

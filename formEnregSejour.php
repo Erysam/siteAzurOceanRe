@@ -38,7 +38,7 @@ if (isset($_GET['enreg']) && $_GET['enreg'] === 'enregReussi') {
 </div>
 
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/zephyredim.jpg" alt="bateaux">
     </div>
 </div>

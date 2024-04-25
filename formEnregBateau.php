@@ -14,7 +14,7 @@ if (isset($_GET['modif']) && $_GET['modif'] === 'modifReussie') {
 </div>
 
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/sunOdyssey.JPG" alt="bateaux">
     </div>
 </div>

@@ -35,7 +35,7 @@ if (!issetNotEmpty($_SESSION['user']['id'])) {
     <h4>Modifier votre mot de passe:</h4>
 </div>
 <div class="img-content">
-    <div class="img-conx">
+    <div class="imgEnTete">
         <img src="image/voilierDuCiel.jpg" alt="bateaux">
     </div>
 </div>
