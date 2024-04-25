@@ -2,7 +2,7 @@
 
 function issetNotEmpty($var1)
 {
-    $IssNoEmpt = isset($var1) && !empty($var1);
+    $IssNoEmpt = ($var1 != null) && isset($var1) && !empty($var1);
     return $IssNoEmpt;
 }
 
