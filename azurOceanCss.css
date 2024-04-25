@@ -64,16 +64,17 @@ p {
 
 }
 
-/*div autour photo enTete de siteNautique.php */
+/*div autour photo enTete de siteNautique.php, tous les profils et tous les form */
 .imgEnTete {
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 1%;
 
 }
 
 /*liseré sur photo enTete de siteNautique.php*/
 .imgBord {
-    border: 1px solid rgb(250, 245, 245);
+    border: 9px solid rgba(252, 249, 249, 0.37);
 }
 
 .imgSejResa {
