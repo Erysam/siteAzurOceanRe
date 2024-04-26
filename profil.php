@@ -28,7 +28,6 @@ if (!issetNotEmpty($_SESSION['user']['id'])) {
 }
 
 $idUserSession = $_SESSION['user']['id'];
-//$mIdMembre;
 $mEmail;
 $mNom;
 $mPrenom;
