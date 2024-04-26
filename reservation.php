@@ -90,7 +90,7 @@ include('fonctionsCommunes.php');
 
 
 
-        <form action="enregSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
+        <form action="enregResaSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
 
             <h5>RESERVEZ VOTRE SEJOUR</h5>
             <div class="row">
@@ -111,7 +111,7 @@ include('fonctionsCommunes.php');
 
             </div>
 
-
+            <!--
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="dateDeb">Date de début de séjour</label>
@@ -125,8 +125,9 @@ include('fonctionsCommunes.php');
             </div>
 
             <br>
-
+        -->
             <div class="formConxDiv">
+                <input type="hidden" name="idSej" value="$idSej">
                 <label class="buttonSub" for="enreg"> <input type="submit" id="enreg" value="Valider votre réservation"></label>
             </div>
         </form>
