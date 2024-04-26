@@ -50,10 +50,3 @@ if ($_POST['idSej']) {
         }
     }
 }
-
-
-
-    /*
-   Faire une condition afin que les reservations en 1dans la col reservation dans la table sejour ne s'affiche plus dans les recherches.
-   voi
-*/
