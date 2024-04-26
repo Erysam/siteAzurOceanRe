@@ -21,7 +21,7 @@ if (isset($_GET['resa']) && $_GET['resa'] === 'emptyResa') {
 
 $maCon = connexion();
 $stmt = mysqli_stmt_init($maCon);
-$sqlSelect = "SELECT * FROM sejour";
+$sqlSelect = "SELECT * FROM sejour WHERE reservation != '1'";
 
 if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 

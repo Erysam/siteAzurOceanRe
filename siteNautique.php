@@ -18,7 +18,7 @@ if (!empty($_GET['cp'])) {
 
         $maCon = connexion();
         $stmt = mysqli_stmt_init($maCon);
-        $sqlSelect = "SELECT * FROM sejour WHERE cpSej = ?";
+        $sqlSelect = "SELECT * FROM sejour WHERE cpSej = ? AND reservation != '1'";
 
         if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 
