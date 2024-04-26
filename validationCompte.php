@@ -8,8 +8,7 @@ if (isset($_GET['erreurMail'])) {
     $vd = var_dump($_GET['erreurMail']);
     echo 'Message mail valid : ' . var_dump($_GET['erreurMail']);
 } else if (!isset($_GET['erreurMail'])) {
-    $vd = var_dump($messageDerreurMail);
-    echo 'Pas d erreur : ' . $vd;
+    echo 'Membre enregistré';
 }
 ?>
 <div class="h4">
