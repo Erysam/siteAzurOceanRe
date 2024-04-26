@@ -2,6 +2,11 @@
 session_start();
 session_regenerate_id(true);
 include('header.php');
+
+
+if (isset($_GET['sejourResa']) && $_GET['sejourResa'] === 'reserve') {
+    echo ('Réservation effectuée.');
+}
 ?>
 
 
