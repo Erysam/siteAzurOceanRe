@@ -29,7 +29,7 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 
     mysqli_stmt_store_result($stmt);
     if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntitil, $sDescript, $sDateDeb, $sDateFin, $sAdresse, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
+        mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntitil, $sDescript, $sDateDeb, $sDateFin, $sAdresse, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3, $resa);
 
         $num = 0; //compteur pour mon carousel afin que id soit différente pour chaque séjour
         while (mysqli_stmt_fetch($stmt)) { //tant que je recup des resultats de mon stmt, je traite chq result ici
@@ -38,6 +38,7 @@ if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
             echo " [ <font style=\"color:orange\"> Séjour : $sTypeNav </font> ]";
             echo " [ <font style=\"color:purple\">Date début : $sDateDeb</font> ] [ <font style=\"color:green\">Date fin : $sDateDeb</font> ]";
             echo "<br>";
+            echo "[ <font style=\"color:orange\"> Séjour : $sIntitil </font> ] ";
             echo "[ <font style=\"color:orange\"> Séjour : $sDescript </font> ] ";
             echo "<br/>";
             $num = $num + 1;
