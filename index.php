@@ -17,7 +17,7 @@ if (isset($_GET['sejourResa']) && $_GET['sejourResa'] === 'reserve') {
     </form>
 </div>
 <?php
-if (isset($_GET['cp']) && $_GET['cp'] == 'emptyCp') {
+if (isset($_GET['cp']) && $_GET['cp'] === 'emptyCp') {
     echo "Code postal inexistant, veuillez saisir un autre cp.";
 }
 ?>
