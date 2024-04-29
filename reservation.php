@@ -86,27 +86,26 @@ include('fonctionsCommunes.php');
             header('Location: sejours.php?resa=emptyResa');
             exit;
         }
-        ?>
 
 
-
-        <form action="enregResaSejour.php" method="POST" class="formConx" enctype="multipart/form-data" onsubmit="return verifNumberCp();">
+        echo <<<_END
+        <form action="enregResaSejour.php" method="POST" class="formConx" enctype="multipart/form-data">
 
             <h5>RESERVEZ VOTRE SEJOUR</h5>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="idBat">avez-vous le permis bateau?</label>
-                    <select class="form-select" aria-label="select" name="idBat">
-                        <option value='noPermis'>Pas de permis bateau</option>
-                        <option value='permisC'>Côtier</option>
-                        <option value='permisH'>Hauturier</option>
+                    <label for="permisBat">avez-vous le permis bateau?</label>
+                    <select class="form-select" aria-label="select" name="permisBat">
+                        <option value='0'>Pas de permis bateau</option>
+                        <option value='1'>Côtier</option>
+                        <option value='2'>Hauturier</option>
                     </select>
                 </div>
 
 
                 <div class="col-md-6 mb-3">
-                    <label for="cp">nbre de personnes (max <?php echo $bPlace; ?>)</label>
-                    <input type="number" class="form-control" name="nbPersonne" placeholder="1" min="1" max=<?php echo $bPlace; ?>>
+                    <label for="nbPassagers">nbre de personnes (max $bPlace)</label>
+                    <input type="number" class="form-control" name="nbPassagers" placeholder="personnes à bord" min="1" max=$bPlace>
                 </div>
 
             </div>
@@ -115,12 +114,12 @@ include('fonctionsCommunes.php');
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="dateDeb">Date de début de séjour</label>
-                    <input type="date" id="dateDeb" name="dateDeb" min="<?php echo date('Y-m-d'); ?>" max="2050-12-31" />
+                    <input type="date" id="dateDeb" name="dateDeb" min="<?php echo date('Y-m-d'); ?>" max="2050-12-31" >
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label for="dateFin">Date de fin de séjour</label>
-                    <input type="date" id="dateFin" name="dateFin" max="2050-12-31" onchange="gestionDateDebDateFin()" />
+                    <input type="date" id="dateFin" name="dateFin" max="2050-12-31" onchange="gestionDateDebDateFin()" >
                 </div>
             </div>
 
@@ -132,6 +131,6 @@ include('fonctionsCommunes.php');
             </div>
         </form>
 
-        <?php
+        _END;
         include('footer.php')
         ?>
