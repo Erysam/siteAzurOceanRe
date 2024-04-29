@@ -6,7 +6,7 @@ include('header.php');
 
 <div class="img-content">
     <div class="imgEnTete">
-        <img src="image/sunOdyssey391.JPG" alt="rgpd" class="imgBord">
+        <img src="image/zephyredim.jpg" alt="Voilier sur la mer" class="imgBord">
     </div>
 </div>
 
@@ -28,7 +28,7 @@ if (!empty($_GET['cp'])) {
 
             mysqli_stmt_store_result($stmt);
             if (mysqli_stmt_num_rows($stmt) > 0) {
-                mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3);
+                mysqli_stmt_bind_result($stmt, $sIdSej, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3, $resa);
 
                 while (mysqli_stmt_fetch($stmt)) {
 
