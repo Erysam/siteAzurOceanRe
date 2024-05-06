@@ -96,9 +96,9 @@ include('fonctionsCommunes.php');
                 <div class="col-md-6 mb-3">
                     <label for="permisBat">avez-vous le permis bateau?</label>
                     <select class="form-select" aria-label="select" name="permisBat">
-                        <option value='0'>Pas de permis bateau</option>
-                        <option value='1'>Côtier</option>
-                        <option value='2'>Hauturier</option>
+                        <option value="0">Pas de permis bateau</option>
+                        <option value="1">Côtier</option>
+                        <option value="2">Hauturier</option>
                     </select>
                 </div>
 
