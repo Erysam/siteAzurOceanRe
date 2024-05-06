@@ -29,7 +29,7 @@ if ($_POST['idSej']) {
     $stmt = mysqli_stmt_init($maCon);
     $sqlInsert = "INSERT INTO reservation(idReservation, idSej, idMembre, passagers, permisBat) VALUES (NULL, ?, ?, ?, ?)";
     if (mysqli_stmt_prepare($stmt, $sqlInsert)) {
-        mysqli_stmt_bind_param($stmt, "iiii", $idSejResa, $idUserSession, $passager, $permis);
+        mysqli_stmt_bind_param($stmt, "iiis", $idSejResa, $idUserSession, $passager, $permis);
 
         try {
             mysqli_stmt_execute($stmt);
@@ -38,7 +38,6 @@ if ($_POST['idSej']) {
             mysqli_stmt_close($stmt);
 
             $stmt = mysqli_stmt_init($maCon);
-            var_dump($idSejResa);
             $reservationStatus = 1;
             $sqlUpdate = "UPDATE sejour SET reservation = ? WHERE idSejour = ?";
             if (mysqli_stmt_prepare($stmt, $sqlUpdate)) {
@@ -50,7 +49,6 @@ if ($_POST['idSej']) {
                 exit;
             }
         } catch (mysqli_sql_exception $e) {
-            var_dump($e);
             if (mysqli_errno($maCon) == 1062) {
                 mysqli_close($maCon);
                 // Redir vers le form avec get erreur pour expliquer au user l'erreur (script php sur le form)
@@ -60,7 +58,6 @@ if ($_POST['idSej']) {
         }
     }
 } else {
-    var_dump('>>>>>>>' . $idSejResa);
-    // header('Location: sejours.php?resa=emptyResa');
+    header('Location: sejours.php?resa=emptyResa');
     exit;
 }
