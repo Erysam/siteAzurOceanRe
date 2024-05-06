@@ -18,7 +18,7 @@ if (isset($_GET['sejourResa']) && $_GET['sejourResa'] === 'reserve') {
 </div>
 <?php
 if (isset($_GET['cp']) && $_GET['cp'] === 'emptyCp') {
-    echo "Code postal inexistant, veuillez saisir un autre cp.";
+    echo "Code postal inexistant ou pas de séjour dans cette ville, veuillez saisir un autre cp.";
 }
 ?>
 
