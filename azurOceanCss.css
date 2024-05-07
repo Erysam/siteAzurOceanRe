@@ -74,7 +74,8 @@ p {
 
 /*liseré sur photo enTete de siteNautique.php*/
 .imgBord {
-    border: 9px solid rgba(252, 249, 249, 0.37);
+    border: 2px solid rgba(63, 61, 61, 0.37);
+    border-radius: 4px;
 }
 
 .imgSejResa {
