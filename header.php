@@ -41,9 +41,11 @@
                             Menu
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="reservation.php">Faire une réservations</a></li>
                             <li><a class="dropdown-item" href="formEnregBateau.php">Enregistrement Bateau</a></li>
                             <li><a class="dropdown-item" href="formEnregSejour.php">Enregistrement Séjour</a></li>
+                            <li><a class="dropdown-item" href="listBoat.php">Liste de mes bateaux</a></li>
+                            <li><a class="dropdown-item" href="listSejoursProp.php">Liste des séjours proposés</a></li>
+                            <li><a class="dropdown-item" href="listReservations.php">Mes réservations</a></li>
                         </ul>
                     </li>
 
@@ -55,9 +57,7 @@
                             <li><a class="dropdown-item" href="profil.php">Profil</a></li>
                             <li><a class="dropdown-item" href="profilModifMail.php">Modifier email</a></li>
                             <li><a class="dropdown-item" href="profilModifMdp.php">Modifier mot de passe</a></li>
-                            <li><a class="dropdown-item" href="listBoat.php">Liste de mes bateaux</a></li>
-                            <li><a class="dropdown-item" href="listSejoursProp.php">Liste des séjours proposés</a></li>
-                            <li><a class="dropdown-item" href="listReservations.php">Mes réservations</a></li>
+                            
                             
                         </ul>
                     </li>
