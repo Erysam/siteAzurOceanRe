@@ -69,42 +69,52 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `actif` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`idMembre`) USING BTREE,
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb3;
 
--- Listage des données de la table azurocean.membre : ~11 rows (environ)
+-- Listage des données de la table azurocean.membre : ~4 rows (environ)
 DELETE FROM `membre`;
 INSERT INTO `membre` (`idMembre`, `email`, `nom`, `prenom`, `adresse`, `cp`, `ville`, `tel`, `mdp`, `cle`, `actif`) VALUES
-	(8, 'pop2@gmail.com', 'al', 'ma', '32 rue poule', 56344, 'plop', 607469538, 'Chou1Kale', '', 0),
-	(9, 'pop3@gmail.com', 'Al', 'Maria-Elisa', '2 rue ploppy', 11234, 'Boule', 607469538, '$argon2id$v=19$m=65536,t=4,p=1$VlZqMXpKMEtNR1ZSa0JyVw$uepeDU+EczmliCTqmB2cLIackvtZ3bzqLRASGeJPpcE', '', 0),
-	(14, 'pop2gty@gmail.com', 'ffefs', 'fesfsf', 'fesfesfesf', 43567, 'PLOOP', 909090909, '$argon2id$v=19$m=65536,t=4,p=1$c0VYWEhzMG5CY3B2aE1xUA$g8Zr3HniITYFeqpgELO/Muf3j5ljb+TtKvcDlNxJZ14', '', 0),
-	(15, 'pop3gty@gmail.com', 'ffefs', 'fesfsf', 'fesfesfesf', 43567, 'PLOOP', 909090909, '$argon2id$v=19$m=65536,t=4,p=1$b1o1L1oyTE9qek0uNHMyVA$zp/M5M8Cnf+za/onb63HcXGLoNv/yogqeZpNv6tBq5Y', '', 0),
-	(46, 'pal@po.fr', 'de', 'dez', 'dezdzed', 12340, 'DSZAFDZAFDA', 909090909, '$argon2id$v=19$m=65536,t=4,p=1$OXhUQ3d5MTVVNEZHTlhKbg$2b6coXNSezcsqtuGBI28Feiw4FFr3dY1xRzL850SYb0', '', 0),
-	(47, 'testo@po.fr', 'zadz', 'zadza', 'dzada', 12345, 'frfefefefe', 909090909, '$argon2id$v=19$m=65536,t=4,p=1$MDVrb0VHZmU4eS80bktsaQ$ZazXGz3lcUUe1Ism/dLaDkbiQufSQ110fHzpZ6wKiLc', '', 1),
-	(48, 'pop4@gmail.com', 'Akami', 'Yuki', 'dzdzdz', 9000, 'ZDZDZ', 9876543, 'Chou1Kale,', '', 1),
-	(49, 'pop1@gm.com', 'Al', 'ma', 'frfefref', 654332, 'JKLJMLK', 987654321, '$argon2id$v=19$m=65536,t=4,p=1$cC9BZ2Rwa2o5bEtYSkRYag$avvXNmv1ney3pMrq4kE0iZLAEly5gfP2s8EBC82CAAA', '', 1),
-	(52, 'm@a.fr', 'dezZ', 'ma', 'edzdz', 22222, 'eddfed', 11111111, '$argon2id$v=19$m=65536,t=4,p=1$ZzBiQUdMbnI3YTVQLlBvYQ$+P/Cijp41VYPor0Y/NnLGUb5nuTZNHm6UQDkBuPE74o', '', 1),
-	(53, 'pop0@gmail.com', 'Poireau', 'Pierre', 'dzadza', 12333, 'popbull', 12345665, '$argon2id$v=19$m=65536,t=4,p=1$NWE5QWh1MWZUa2IuWnBTaA$zrUceuMbKMno0g9rRNXeHrv0WStvApjwYEMNR+hL5JA', '', 1),
 	(54, 'poppy@mail.fr', 'pop', 'test', '43Rue poulet', 44444, 'Paris', 607469538, '$argon2id$v=19$m=65536,t=4,p=1$OWF1dXZNNWxwRGZvM1N1bQ$MCL9ubk7vH9LGyF8LoRu1S7IoZuC/9HhQ2T/vvnA960', 'f8bde35ec71e7aab11a462b4094ad4c6', 1),
 	(64, 'azurOcean@protonmail.com', 'fr', 'tr', 'ezaea', 12223, 'der', 909090900, '$argon2id$v=19$m=65536,t=4,p=1$UERGWmk2ckQyZjRpWDFGSQ$ecN/91mfu+Qbwr0fto2y6y5CtJJfPuUWepgsJiY8E1Q', 'd2a41b52ef69480bde84f9311db0352a', 1),
-	(65, 'client2@cl.fr', 'cli', 'ent', 'plop', 65432, 'Mont', 987654390, '$argon2id$v=19$m=65536,t=4,p=1$Yll0Nkx0aUNpY2x1ejF4Qg$E9TwbKgvpJW4mgQD+6flDKV3siiZXI9bUsX6DIFYwCY', '49096385e98eb40bac99ac425b4449c1', 1);
+	(65, 'client2@cl.fr', 'cli', 'Mina', 'plop', 65432, 'Mont', 987654390, '$argon2id$v=19$m=65536,t=4,p=1$Yll0Nkx0aUNpY2x1ejF4Qg$E9TwbKgvpJW4mgQD+6flDKV3siiZXI9bUsX6DIFYwCY', '49096385e98eb40bac99ac425b4449c1', 1),
+	(67, 'bhml0e2xi@mozmail.com', 'ma', 'al', 'rue lili', 9000, 'Mont', 909090900, '$argon2id$v=19$m=65536,t=4,p=1$Ri9iY2JhdldhaVFyWmFwSQ$7N4vNK6efLfMmg+fidFLhZ4sLpiryETvc09vOn529ks', '954612de072ad4d5a7c813c801c1d2eb', 1);
 
 -- Listage de la structure de table azurocean. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
   `idReservation` int NOT NULL AUTO_INCREMENT,
+  `idSej` int NOT NULL,
+  `idMembre` int NOT NULL,
+  `passagers` int NOT NULL,
+  `permisBat` enum('Pas de permis','Côtier','Hauturier') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Attention data considérée comme une string',
+  PRIMARY KEY (`idReservation`),
+  KEY `idSej` (`idSej`),
+  KEY `FK_reservation_membre` (`idMembre`),
+  CONSTRAINT `FK_reservation_membre` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`idMembre`),
+  CONSTRAINT `FK_reservation_sejour` FOREIGN KEY (`idSej`) REFERENCES `sejour` (`idSejour`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table azurocean.reservation : ~3 rows (environ)
+DELETE FROM `reservation`;
+INSERT INTO `reservation` (`idReservation`, `idSej`, `idMembre`, `passagers`, `permisBat`) VALUES
+	(21, 1, 65, 3, 'Pas de permis'),
+	(22, 2, 65, 3, ''),
+	(23, 3, 65, 4, 'Pas de permis');
+
+-- Listage de la structure de table azurocean. reservation_par_jour_test
+CREATE TABLE IF NOT EXISTS `reservation_par_jour_test` (
+  `idReservation` int NOT NULL AUTO_INCREMENT,
   `idSejour` int NOT NULL,
   `idMembre` int NOT NULL,
-  `dateRes` date NOT NULL,
-  `prixJour` int NOT NULL,
-  PRIMARY KEY (`idReservation`),
-  KEY `idSejour` (`idSejour`),
-  KEY `idMembre` (`idMembre`),
-  KEY `idReservation` (`idReservation`),
-  CONSTRAINT `idMembre` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`idMembre`),
-  CONSTRAINT `idSejour` FOREIGN KEY (`idSejour`) REFERENCES `sejour` (`idSejour`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `jourResa` int NOT NULL,
+  PRIMARY KEY (`idReservation`,`jourResa`) USING BTREE,
+  KEY `idSejour` (`idSejour`) USING BTREE,
+  KEY `idMembre` (`idMembre`) USING BTREE,
+  CONSTRAINT `reservation_par_jour_test_ibfk_1` FOREIGN KEY (`idMembre`) REFERENCES `membre` (`idMembre`),
+  CONSTRAINT `reservation_par_jour_test_ibfk_2` FOREIGN KEY (`idSejour`) REFERENCES `sejour` (`idSejour`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Listage des données de la table azurocean.reservation : ~0 rows (environ)
-DELETE FROM `reservation`;
+-- Listage des données de la table azurocean.reservation_par_jour_test : ~0 rows (environ)
+DELETE FROM `reservation_par_jour_test`;
 
 -- Listage de la structure de table azurocean. sejour
 CREATE TABLE IF NOT EXISTS `sejour` (
@@ -122,6 +132,7 @@ CREATE TABLE IF NOT EXISTS `sejour` (
   `photoSej1` text,
   `photoSej2` text,
   `photoSej3` text,
+  `reservation` enum('0','1') DEFAULT '0' COMMENT '0 séjour dispo, 1 séjour réservé',
   PRIMARY KEY (`idSejour`),
   KEY `FK_sejour_bateau` (`idBateau`),
   CONSTRAINT `FK_sejour_bateau` FOREIGN KEY (`idBateau`) REFERENCES `bateau` (`idBateau`)
@@ -129,14 +140,14 @@ CREATE TABLE IF NOT EXISTS `sejour` (
 
 -- Listage des données de la table azurocean.sejour : ~7 rows (environ)
 DELETE FROM `sejour`;
-INSERT INTO `sejour` (`idSejour`, `idBateau`, `typeNavSej`, `intituleSej`, `descriptionSej`, `dateDebutSej`, `dateFinSej`, `adresseSej`, `cpSej`, `villeSej`, `prixSej`, `photoSej1`, `photoSej2`, `photoSej3`) VALUES
-	(1, 48, 'côtier', 'Cabotage côte provençale', 'Une excursion sur la côte provençale (departement du Var) , aux environs de Fort Bregançon, sur un voilier de 39 pieds. ', '2021-06-05', '2021-04-17', NULL, 83000, 'Hyeres', 1600, './image\\voile.jpg', './image/lalonde.jpg', './image/bateauAvoile.jpg'),
-	(2, 1, 'côtier', 'Week-end dans le Sud', 'Séjour 2 nuits sur un voilier Sun 2000, avec navigation côtière du port de Hyères jusqu\'au Lavandou.\r\nNotre bateau le Zephyr est équipé de 4 couchettes.', '2021-04-22', '2021-04-24', NULL, 13000, 'Marseille\r\n', 845, './image/lalonde.jpg', './image/bateauAvoile.jpg', './image/laplaya.jpg'),
-	(3, 47, 'fluvial', 'Séjour Parisien', 'Un séjour sur la Seine dans les environs de Paris', '2023-12-12', '2023-12-24', NULL, 83000, 'Hyeres', 650, './image/bateauAvoile.jpg', './image/lalonde.jpg', './image/laplaya.jpg'),
-	(9, 61, 'hauturier', 'pipi', 'Balade verte dans les canaux de la ville', '2024-03-22', '2024-03-08', 'Crypte 34', 39000, 'Undercity', 56676, NULL, NULL, NULL),
-	(10, 61, 'hauturier', 'PROUT', 'au bord du lac de la corne', '2024-03-15', '2024-03-09', 'Quai 21', 78654, 'Thunderbluff', 654, NULL, NULL, NULL),
-	(11, 61, 'hauturier', 'Test 13', 'xqxQxqXQx', '2024-03-15', '2024-03-20', 'Canal de Loucq', 56432, 'Pauville', 987, NULL, NULL, NULL),
-	(12, 61, 'hauturier', 'Test 13.2', 'au bord du lac LocLac', '2024-03-15', '2024-03-21', 'Port de Lerville', 80000, 'Lerville', 90, 'C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/photo2044c1433d136e3f6.png', NULL, NULL);
+INSERT INTO `sejour` (`idSejour`, `idBateau`, `typeNavSej`, `intituleSej`, `descriptionSej`, `dateDebutSej`, `dateFinSej`, `adresseSej`, `cpSej`, `villeSej`, `prixSej`, `photoSej1`, `photoSej2`, `photoSej3`, `reservation`) VALUES
+	(1, 48, 'côtier', 'Cabotage côte provençale', 'Une excursion sur la côte provençale (departement du Var) , aux environs de Fort Bregançon, sur un voilier de 39 pieds. ', '2021-06-05', '2021-04-17', NULL, 83000, 'Hyeres', 1600, './image\\voile.jpg', './image/lalonde.jpg', './image/bateauAvoile.jpg', '0'),
+	(2, 1, 'côtier', 'Week-end dans le Sud', 'Séjour 2 nuits sur un voilier Sun 2000, avec navigation côtière du port de Hyères jusqu\'au Lavandou.\r\nNotre bateau le Zephyr est équipé de 4 couchettes.', '2021-04-22', '2021-04-24', NULL, 13000, 'Marseille\r\n', 845, './image/lalonde.jpg', './image/bateauAvoile.jpg', './image/laplaya.jpg', '0'),
+	(3, 47, 'fluvial', 'Séjour Parisien', 'Un séjour sur la Seine dans les environs de Paris', '2023-12-12', '2023-12-24', NULL, 83000, 'Hyeres', 650, './image/bateauAvoile.jpg', './image/lalonde.jpg', './image/laplaya.jpg', '0'),
+	(9, 61, 'hauturier', 'plop', 'Balade verte dans les canaux de la ville', '2024-03-22', '2024-03-08', 'Crypte 34', 39000, 'Undercity', 56676, NULL, NULL, NULL, '0'),
+	(10, 61, 'hauturier', 'plip', 'au bord du lac de la corne', '2024-03-15', '2024-03-09', 'Quai 21', 78654, 'Thunderbluff', 654, NULL, NULL, NULL, '0'),
+	(11, 61, 'hauturier', 'Test 13', 'xqxQxqXQx', '2024-03-15', '2024-03-20', 'Canal de Loucq', 56432, 'Pauville', 987, NULL, NULL, NULL, '0'),
+	(12, 61, 'hauturier', 'Test 13.2', 'au bord du lac LocLac', '2024-03-15', '2024-03-21', 'Port de Lerville', 80000, 'Lerville', 90, 'C:/laragon/www/siteAzurOceanRe/azurOceanRe_imagesUsersBateaux/photo2044c1433d136e3f6.png', NULL, NULL, '0');
 
 -- Listage de la structure de table azurocean. skipper
 CREATE TABLE IF NOT EXISTS `skipper` (
