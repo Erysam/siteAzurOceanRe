@@ -41,7 +41,8 @@ include('fonctionsCommunes.php');
 
             $maCon = connexion();
             $stmt = mysqli_stmt_init($maCon);
-            $sqlSelect = "SELECT s.idBateau, s.typeNavSej, s.intituleSej, s.descriptionSej, s.dateDebutSej, s.dateFinSej, s.cpSej, s.villeSej, s.prixSej, s.photoSej1, s.photoSej2, s.photoSej3, b.places FROM sejour s JOIN bateau b ON s.idBateau = b.idBateau WHERE s.idSejour = ?";
+            $sqlSelect = "SELECT s.idBateau, s.typeNavSej, s.intituleSej, s.descriptionSej, s.dateDebutSej, s.dateFinSej, s.cpSej, s.villeSej, s.prixSej, s.photoSej1, s.photoSej2, s.photoSej3, b.places 
+            FROM sejour s JOIN bateau b ON s.idBateau = b.idBateau WHERE s.idSejour = ?";
 
             if (mysqli_stmt_prepare($stmt, $sqlSelect)) {
 
