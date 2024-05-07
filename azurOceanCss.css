@@ -270,3 +270,12 @@ quand l'idSejour est abs ou quand on clique sur le lien faire une reservation (c
     color: white;
     font-weight: bold;
 }
+
+.bordure {
+    border-bottom: 1px solid black;
+    /* Largeur, style et couleur de la bordure */
+    padding-bottom: 20px;
+    /* Espace entre le contenu et la bordure */
+    margin-bottom: 20px;
+    /* Espace en bas de la bordure */
+}
