@@ -35,9 +35,7 @@ if (issetNotEmpty($_SESSION)) {
         mysqli_stmt_store_result($stmt);
         if (mysqli_stmt_num_rows($stmt) > 0) {
             mysqli_stmt_bind_result($stmt, $sIdBat, $sTypeNav, $sIntit, $sDescript, $sDateDeb, $sDateFin, $sAdress, $sCp, $sVille, $sPrix, $sPhoto1, $sPhoto2, $sPhoto3, $placeBat);
-            $num = 0;
             $numResa = 0;
-            //compteur pour mon carousel afin que id soit différente pour chaque séjour
             while (mysqli_stmt_fetch($stmt)) {
                 $numResa =  $numResa + 1;
                 echo "<br/>";
